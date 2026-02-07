@@ -1,13 +1,11 @@
 import useInput from "../hooks/useInput";
 
 export default function AddTask({ onAddTask }) {
-  // REMOVIDO AO INSERIR O USEINPUT // constante criada para receber o valor do input com o nome da tarefa
-  // const [newTask, setNewTask] = useState("");
 
   // Recebe o objeto literal retornado peo useInput
   const task = useInput();
 
-  //   Objetivos da função: prevenir recarregamento da página, validação simples, impedindo a inserção de tarefas sem nada escrito e adicionar a tarefa à lista preexeistente
+  //   Objetivos da função: prevenir recarregamento da página, validação simples, impedindo a inserção de tarefas sem nada escrito e adicionar a tarefa à lista preexeistente, utilizando função "addTask" passada via props.
   const handleSubmit = (e) => {
     // evita o recarregamento completo da página
     e.preventDefault();
@@ -18,7 +16,6 @@ export default function AddTask({ onAddTask }) {
     // Envio de formulário e renderização: utiliza o useState do Inpute e passa como parâmetro da função
     onAddTask(task.value.trim());
     
-    // REMOVIDO AO INSERIR O USEINPUT setNewTask("");
     // Função de limpeza obtida de useInput
     task.clean();
   };

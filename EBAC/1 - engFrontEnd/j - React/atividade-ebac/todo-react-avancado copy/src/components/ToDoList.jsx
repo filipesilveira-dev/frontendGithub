@@ -54,15 +54,6 @@ export default function ToDoList() {
         console.error("Falha ao atualizar tarefa", error);
         alert("Não foi possível atualizar a tarefa.");
       });
-
-    // TRECHO DE CÓDIGO QUE ATUALIZAVA APENAS O FRONTEND
-    // setTasks((prev) =>
-    //   prev.map((task) =>
-    //     task._id === taskId
-    //       ? { ...task, isCompleted: !task.isCompleted }
-    //       : task,
-    //   ),
-    // );
   };
 
   console.log("Componente ToDoList executado");
@@ -121,22 +112,8 @@ export default function ToDoList() {
     <div className="flex flex-col justify-center items-center gap-4">
       {/* componente responsável pelas tarefas adicionadas. Passadas as propriedades para alterar o useState "tasks" */}
       <AddTask
-        // REMOVIDO setter para manipular o estado de tasks, adicionando task
-        // setTasks={setTasks}
-        // REMOVIDO utilizado para salvar tarefa no servidor de API
-        // apiUrl={API_URL}
         onAddTask={addTask}
       />
-
-      {/* Alternativa ao select
-      
-      <div>
-        <button onClick={() => setFilter("all")}>Todas</button>
-
-        <button onClick={() => setFilter("completed")}>Concluídas</button>
-
-        <button onClick={() => setFilter("pending")}>Pendentes</button>
-      </div> */}
 
       <div>
         <select
@@ -166,14 +143,8 @@ export default function ToDoList() {
         .map((task) => (
           <Task
             key={task._id}
-            // REMOVIDO (DESNECESSÁRIO APÓS MUDANÇA DA FUNÇÃO DE DELETAR PARA CÁ) setter para manipular o estado de tasks, excluindo task
-            // setTasks={setTasks}
-            // REMOVIDO (PROBLEMA DE PERFORMANCE) trata-se do estado inteiro de todas as tarefas. Utilizado no filter(0 para remover a tarefa da tela)
-            // tasks={tasks}
             // criado pelo método map() abrange todas as características de UMA tarefa (_id e title). Trata-se de uma variável temporária. Representa cada item da array durante a iteração. Utilizado em filter() para comparar o _id da tarefa em questão com o id recebido como argumento da função "deleteTask".
             task={task}
-            // REMOVIDO (DESNECESSÁRIO QUANDO A FUNÇÃO DE DELETAR VEIO PARA CÁ) utilizado para deletar tarefa do servidor de API
-            // apiUrl={API_URL}
             onDeleteTask={deleteTask}
             onChangeTaskStatus={changeTaskStatus}
           />

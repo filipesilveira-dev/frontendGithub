@@ -1,4 +1,4 @@
-import { useState, useEffect, memo } from "react";
+import { useEffect, memo } from "react";
 
 function Task({ task, onDeleteTask, onChangeTaskStatus }) {
   // constante que recebe o useState que controlará o estado de concluída da tarefa (Substituir pelo useContext??)
@@ -16,9 +16,11 @@ function Task({ task, onDeleteTask, onChangeTaskStatus }) {
   // };
 
   return (
-    <li>
+    <li
+      className="flex justify-between items-center w-100 mb-2 p-2 rounded-xl border border-gray-300 hover:border-blue-500 hover:shadow-md transition-all"
+    >
       {/* arrow function desnecessária por não possuir parâmetro */}
-      <button onClick={()=>onChangeTaskStatus(task._id)}>
+      <button onClick={() => onChangeTaskStatus(task._id)}>
         <span className={task.isCompleted ? "line-through" : " "}>
           {task.title}
         </span>
@@ -28,7 +30,7 @@ function Task({ task, onDeleteTask, onChangeTaskStatus }) {
         onClick={() => {
           onDeleteTask(task._id);
         }}
-        className="hover:cursor-pointer"
+        className="hover:cursor-pointer bg-red-500 text-white p-2 rounded-xl"
       >
         Remover
       </button>
