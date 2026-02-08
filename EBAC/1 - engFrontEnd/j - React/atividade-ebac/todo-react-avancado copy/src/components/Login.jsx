@@ -1,12 +1,12 @@
-import { useContext } from "react";
 import useInput from "../hooks/useInput";
-import { UserContext } from "../contexts/UserContext";
+import { useSetRecoilState } from "recoil";
+import userState from '../state/user'
 
 export default function Login() {
   const userName = useInput();
 
-  // Utilização do estado geral (user) passado por mmeio de useContext lá em <App>. Aqui está sendo utilizado o setUser e não o user, pois aqui o intuito é alterar o estado de user. Se fosse fazer um filtro de tarefas por usuário, user que precisaria ser declarado, pois seria apenas uma "leitura" do seu valor.
-  const { setUser } = useContext(UserContext);
+// Informação sobre o estado do usuário obtida lá do átomo criado em "user.js". O "setState" anterior foir removido. Foi utilizada a mesma nomenclatura anterior
+const setUser = useSetRecoilState(userState);
 
   // Função chamada com "onSubmit" para lidar com o submit do input do login
   const handleLogin = (e) => {

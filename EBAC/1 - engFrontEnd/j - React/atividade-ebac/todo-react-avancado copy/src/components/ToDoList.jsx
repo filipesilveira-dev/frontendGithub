@@ -1,17 +1,19 @@
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import AddTask from "./AddTask";
 import Task from "./Task";
-import { UserContext } from "../contexts/UserContext";
+import { useRecoilState, useRecoilValue } from "recoil";
+import userState from "../state/user";
+import {tasksState} from "../state/tasks";
 
 export default function ToDoList() {
   const API_URL =
-    "https://crudcrud.com/api/cd7ae95e3bf44b2cb1935479aa5a3b70/tasks";
+    "https://crudcrud.com/api/df4f699a258446eda72ce72a31bd966a/tasks";
 
-  // useState aceita apenas um valor. Para simular uma lista de objeto é preciso criar uma array ([]) e colocara cada objeto dentro
-  const [tasks, setTasks] = useState([]);
+  // tasks recebe o átomo tasksState. Utilizando o "useRecoilState", é possível ler e alterar seu valor. Aqui foi necessário para substotuir o state "const [tasks, setTasks] = useState([]);"
+  const [tasks, setTasks] = useRecoilState(tasksState);
 
-  // Uso do useContext para receber o usuário que está utilizando a aplicação
-  const { user } = useContext(UserContext);
+  // Uso do Recoil para pegar apenas o valor (value)
+  const  user  = useRecoilValue(userState);
 
   // useState criado para controlar o filtro aplicado nas tarefas
   const [filter, setFilter] = useState("all");
@@ -111,27 +113,37 @@ export default function ToDoList() {
   return (
     <div className="flex flex-col justify-center items-center gap-4">
       {/* componente responsável pelas tarefas adicionadas. Passadas as propriedades para alterar o useState "tasks" */}
-      <AddTask
-        onAddTask={addTask}
-      />
+      <AddTask onAddTask={addTask} />
 
       <div>
         <select
-        className="cursor-pointer text-center mb-2 rounded-2xl border border-gray-200 bg-white p-2 shadow-sm"
+          className="cursor-pointer text-center mb-2 rounded-2xl border border-gray-200 bg-white p-2 shadow-sm"
           value={filter}
           onChange={(e) => {
             setFilter(e.target.value);
           }}
         >
-          <option 
-          className="cursor-pointer text-center m-2 p-2 bg-white"
-          value="all"> Todas </option>
-          <option 
-          className="cursor-pointer text-center m-2 p-2 bg-white"
-          value="completed"> Concluídas </option>
-          <option 
-          className="cursor-pointer text-center m-2 p-2 bg-white"
-          value="pending"> Pendentes </option>
+          <option
+            className="cursor-pointer text-center m-2 p-2 bg-white"
+            value="all"
+          >
+            {" "}
+            Todas{" "}
+          </option>
+          <option
+            className="cursor-pointer text-center m-2 p-2 bg-white"
+            value="completed"
+          >
+            {" "}
+            Concluídas{" "}
+          </option>
+          <option
+            className="cursor-pointer text-center m-2 p-2 bg-white"
+            value="pending"
+          >
+            {" "}
+            Pendentes{" "}
+          </option>
         </select>
       </div>
 
