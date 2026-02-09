@@ -1,13 +1,14 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import AddTask from "./AddTask";
 import Task from "./Task";
 import { useRecoilState, useRecoilValue } from "recoil";
-import userState from "../state/user";
+import {userState} from "../state/user";
 import {tasksState} from "../state/tasks";
+import { filterState, filteredTasksSelector } from "../state/filter";
 
 export default function ToDoList() {
   const API_URL =
-    "https://crudcrud.com/api/df4f699a258446eda72ce72a31bd966a/tasks";
+    "https://crudcrud.com/api/5f714a2c71854af7b9221397f49bd1d1/tasks";
 
   // tasks recebe o átomo tasksState. Utilizando o "useRecoilState", é possível ler e alterar seu valor. Aqui foi necessário para substotuir o state "const [tasks, setTasks] = useState([]);"
   const [tasks, setTasks] = useRecoilState(tasksState);
@@ -15,15 +16,11 @@ export default function ToDoList() {
   // Uso do Recoil para pegar apenas o valor (value)
   const  user  = useRecoilValue(userState);
 
-  // useState criado para controlar o filtro aplicado nas tarefas
-  const [filter, setFilter] = useState("all");
+  // Uso do Recoil para pegar o valor (filter) e o setter (setFilter)
+  const [filter, setFilter] = useRecoilState(filterState);
 
-  // Constante que recebe o array com tasks depois de filtro aplicado pelo usuário. Utilizado com map() no momento de renderizar <Task />
-  const filteredTasks = tasks.filter((task) => {
-    if (filter === "completed") return task.isCompleted;
-    if (filter === "pending") return !task.isCompleted;
-    return true;
-  });
+  // Constante que recebe o valor do selector "filteredTasksSelector", o qual retorna as tarefas filtradas
+  const filteredTasks = useRecoilValue(filteredTasksSelector);
 
   // função criada para alternar (toggle) a propriedade, no backend, "isCompleted" da task clicada como concluída
   const changeTaskStatus = (taskId) => {
