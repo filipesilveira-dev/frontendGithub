@@ -8,52 +8,19 @@ import { filterState, filteredTasksSelector } from "../state/filter";
 
 export default function ToDoList() {
   const API_URL =
-    "https://crudcrud.com/api/5f714a2c71854af7b9221397f49bd1d1/tasks";
+    "https://crudcrud.com/api/213c4de024b246f2b9c06d6536ddd5ea/tasks";
 
   // tasks recebe o átomo tasksState. Utilizando o "useRecoilState", é possível ler e alterar seu valor. Aqui foi necessário para substotuir o state "const [tasks, setTasks] = useState([]);"
   const [tasks, setTasks] = useRecoilState(tasksState);
 
-  // Uso do Recoil para pegar apenas o valor (value)
-  const  user  = useRecoilValue(userState);
-
-  // Uso do Recoil para pegar o valor (filter) e o setter (setFilter)
+    // Uso do Recoil para pegar o valor (filter) e o setter (setFilter)
   const [filter, setFilter] = useRecoilState(filterState);
 
   // Constante que recebe o valor do selector "filteredTasksSelector", o qual retorna as tarefas filtradas
   const filteredTasks = useRecoilValue(filteredTasksSelector);
 
-  // função criada para alternar (toggle) a propriedade, no backend, "isCompleted" da task clicada como concluída
-  const changeTaskStatus = (taskId) => {
-    // Variável criada para receber a task, dentro de tasks, que possui o seu "_id" igual ao "taskId" passado como argumento na função
-    const task = tasks.find((taskToUpdate) => taskToUpdate._id === taskId);
-    // Um servidor de API nunca deve receber um "_id" no body (ele já saber qual o _id pela URL). Aqui está sendo feita uma desestruturação do objeto "task", ou seja estão sendo extraídas propriedades do objeto "task" e estão sendo salvas em variáveis. No caso, "_id" está sendo extraída para uma "const _id" e, por meio de um rest operator "...", todas as outras propriedades estão sendo salvas em uma "const taskWithoutId", a qual será passada no body ao invés de "task". Em resumo, a ideia é retirar o "_id" do objeto "task" para não dar erro no momento de atualizar a tarefa. Rest operator junta o restante. Spread operator copia.
-    const { _id, ...taskWithoutId } = task;
-
-    fetch(`${API_URL}/${taskId}`, {
-      // Atualiza toda a task (todas suas propriedades, menos _id)
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        // "...taskWithoutId" representa todas as propriedades que não foram desestruturadas. Elas então são enviadas, invertendo o estado de "isCompleted", ao servidor, que não responde nada, por isso não há ".then((res)=> res.json())". Enviar "...taskWithoutId", apenas as propriedades do objeto "taskWithoutId", ou seja, apenas {"title": "surfar", "isCompleted": flase}, é diferente de enviar o objeto "taskWithoutId". No segundo caso, suas propriedades vão "encapsuladas" por "taskWithoutId".
-        ...taskWithoutId,
-        isCompleted: !task.isCompleted,
-      }),
-    })
-      // Pega a task em json, aqui chamada de updatedTask e atualiza o estado no frontend
-      .then(() => {
-        // Atualização do estado no frontend
-        setTasks((prev) =>
-          // Percorre o estado anterior de tasks, procura a task que possui o _id igual ao passado como argumento e, caso ache, copia todas as outras propriedades de "task", por meio do "...task", e inverte a propriedade "isCompleted". Caso contrário, mantém a task inalterada
-          prev.map((t) =>
-            t._id === taskId ? { ...t, isCompleted: !t.isCompleted } : t,
-          ),
-        );
-      })
-      .catch((error) => {
-        console.error("Falha ao atualizar tarefa", error);
-        alert("Não foi possível atualizar a tarefa.");
-      });
-  };
+  // Uso do Recoil para pegar apenas o valor (value)
+  const  user  = useRecoilValue(userState);
 
   console.log("Componente ToDoList executado");
 
@@ -106,6 +73,39 @@ export default function ToDoList() {
         alert("Não foi possível deletar a tarefa.");
       });
   }, []);
+
+    // função criada para alternar (toggle) a propriedade, no backend, "isCompleted" da task clicada como concluída
+  const changeTaskStatus = (taskId) => {
+    // Variável criada para receber a task, dentro de tasks, que possui o seu "_id" igual ao "taskId" passado como argumento na função
+    const task = tasks.find((taskToUpdate) => taskToUpdate._id === taskId);
+    // Um servidor de API nunca deve receber um "_id" no body (ele já saber qual o _id pela URL). Aqui está sendo feita uma desestruturação do objeto "task", ou seja estão sendo extraídas propriedades do objeto "task" e estão sendo salvas em variáveis. No caso, "_id" está sendo extraída para uma "const _id" e, por meio de um rest operator "...", todas as outras propriedades estão sendo salvas em uma "const taskWithoutId", a qual será passada no body ao invés de "task". Em resumo, a ideia é retirar o "_id" do objeto "task" para não dar erro no momento de atualizar a tarefa. Rest operator junta o restante. Spread operator copia.
+    const { _id, ...taskWithoutId } = task;
+
+    fetch(`${API_URL}/${taskId}`, {
+      // Atualiza toda a task (todas suas propriedades, menos _id)
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        // "...taskWithoutId" representa todas as propriedades que não foram desestruturadas. Elas então são enviadas, invertendo o estado de "isCompleted", ao servidor, que não responde nada, por isso não há ".then((res)=> res.json())". Enviar "...taskWithoutId", apenas as propriedades do objeto "taskWithoutId", ou seja, apenas {"title": "surfar", "isCompleted": flase}, é diferente de enviar o objeto "taskWithoutId". No segundo caso, suas propriedades vão "encapsuladas" por "taskWithoutId".
+        ...taskWithoutId,
+        isCompleted: !task.isCompleted,
+      }),
+    })
+      // Pega a task em json, aqui chamada de updatedTask e atualiza o estado no frontend
+      .then(() => {
+        // Atualização do estado no frontend
+        setTasks((prev) =>
+          // Percorre o estado anterior de tasks, procura a task que possui o _id igual ao passado como argumento e, caso ache, copia todas as outras propriedades de "task", por meio do "...task", e inverte a propriedade "isCompleted". Caso contrário, mantém a task inalterada
+          prev.map((t) =>
+            t._id === taskId ? { ...t, isCompleted: !t.isCompleted } : t,
+          ),
+        );
+      })
+      .catch((error) => {
+        console.error("Falha ao atualizar tarefa", error);
+        alert("Não foi possível atualizar a tarefa.");
+      });
+  };
 
   return (
     <div className="flex flex-col justify-center items-center gap-4">
