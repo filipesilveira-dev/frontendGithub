@@ -45,33 +45,25 @@ function App() {
     }
   }, []);
 
-  // Alterar status
-  const changeBookStatus = useCallback(async (id: string) => {
-  const bookToUpdate = books.find((b) => b._id === id);
-  if (!bookToUpdate) return;
+  // Alterar status (sem id como argumento para não utilizar books no array de dependências)
+  const changeBookStatus = useCallback(async (book: Book) => {
 
-  // ❗ Remove o _id antes de enviar
-  const { _id, ...bookWithoutId } = bookToUpdate;
+    try {
+      const { _id, ...bookWithoutId } = book;
 
-  const updatedBook = {
-    ...bookWithoutId,
-    isRead: !bookToUpdate.isRead,
-  };
-
-  try {
-    await axios.put(`${API_URL}/${id}`, updatedBook);
-
-    setBooks((prev) =>
-      prev.map((book) =>
-        book._id === id
-          ? { ...book, isRead: !book.isRead }
-          : book
-      )
-    );
-  } catch (error) {
-    console.error("Erro ao atualizar status:", error);
-  }
-}, [books]);
+      await axios.put(`${API_URL}/${_id}`, {
+        ...bookWithoutId,
+        isRead: !book.isRead,
+      });
+      // Atualização otimista do estado no frontend
+      setBooks((prev) =>
+        prev.map((b) => (b._id === _id ? { ...b, isRead: !b.isRead } : b)),
+      );
+    } catch (error) {
+      console.error("Falha ao atualizar o livro", error);
+      alert("Não foi possível atualizar o livro.");
+    }
+  }, []);
 
   return (
     <div>

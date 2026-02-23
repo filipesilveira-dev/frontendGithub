@@ -4,7 +4,7 @@ import type { Book } from "../types/Book";
 type BookItemProps = {
   book: Book;
   onDeleteBook: (id: string) => void;
-  onChangeBookStatus: (id: string) => void;
+  onChangeBookStatus: (book: Book) => void;
 };
 
 function BookItem({
@@ -17,7 +17,7 @@ function BookItem({
       <span>{book.name}</span> - <span>{book.author}</span>
 
       <div>
-        <button onClick={() => book._id && onChangeBookStatus(book._id)}>
+        <button onClick={() => book._id && onChangeBookStatus(book)}>
           {book.isRead ? "Lido ✅" : "Marcar como lido"}
         </button>
 

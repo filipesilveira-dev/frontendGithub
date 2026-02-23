@@ -4,7 +4,7 @@ import type { Book } from "../types/Book";
 type Props = {
   books: Book[];
   onDeleteBook: (id: string) => void;
-  onChangeBookStatus: (id: string) => void;
+  onChangeBookStatus: (book: Book) => void;
 };
 
 export const BookList = ({
