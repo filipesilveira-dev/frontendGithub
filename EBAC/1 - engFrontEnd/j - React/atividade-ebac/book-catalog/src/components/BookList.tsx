@@ -1,10 +1,10 @@
 import BookItem from "./BookItem";
-import type { Book } from "../types/Book";
+import type { BookType } from "../types/Book";
 
 type Props = {
-  books: Book[];
+  books: BookType[];
   onDeleteBook: (id: string) => void;
-  onChangeBookStatus: (book: Book) => void;
+  onChangeBookStatus: (book: BookType) => void;
 };
 
 export const BookList = ({

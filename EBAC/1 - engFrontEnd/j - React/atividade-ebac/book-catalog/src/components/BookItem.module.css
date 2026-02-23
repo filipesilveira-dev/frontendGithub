@@ -1,0 +1,53 @@
+.li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: white;
+  border-radius: .25rem;
+}
+
+.book-div {
+  display: flex;
+  gap: 1rem;
+  text-align: center;
+  background-color: white;
+}
+
+.btn-div {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.button {
+  border-radius: .5rem;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background: #e5e7eb;
+  color: #111827;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.button:hover {
+  border-color: #646cff;
+}
+
+.button:focus,
+.button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (min-width: 768px) {
+  .li {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

@@ -1,6 +1,6 @@
 import "./App.css";
 import { useCallback, useEffect, useState } from "react";
-import type { Book } from "./types/Book";
+import type { BookType } from "./types/Book";
 import { BookForm } from "./components/BookForm";
 import { BookList } from "./components/BookList";
 import axios from "axios";
@@ -9,13 +9,13 @@ function App() {
   const API_URL =
     "https://crudcrud.com/api/bff42129527f401e8f7b677cfd9710e7/books";
 
-  const [books, setBooks] = useState<Book[]>([]);
+  const [books, setBooks] = useState<BookType[]>([]);
 
   // Buscar livros
   useEffect(() => {
     async function fetchBooks() {
       try {
-        const response = await axios.get<Book[]>(API_URL);
+        const response = await axios.get<BookType[]>(API_URL);
         setBooks(response.data);
       } catch (error) {
         console.error("Erro ao buscar livros:", error);
@@ -26,9 +26,9 @@ function App() {
   }, []);
 
   // Adicionar livro
-  const addBook = useCallback(async (data: Book) => {
+  const addBook = useCallback(async (data: BookType) => {
     try {
-      const response = await axios.post<Book>(API_URL, data);
+      const response = await axios.post<BookType>(API_URL, data);
       setBooks((prev) => [...prev, response.data]);
     } catch (error) {
       console.error("Erro ao adicionar livro:", error);
@@ -46,8 +46,7 @@ function App() {
   }, []);
 
   // Alterar status (sem id como argumento para não utilizar books no array de dependências)
-  const changeBookStatus = useCallback(async (book: Book) => {
-
+  const changeBookStatus = useCallback(async (book: BookType) => {
     try {
       const { _id, ...bookWithoutId } = book;
 
@@ -66,8 +65,8 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1>Catálogo de Livros</h1>
+    <div className="container">
+      <h1 className="">Catálogo de Livros</h1>
 
       <BookForm onAddBook={addBook} />
 

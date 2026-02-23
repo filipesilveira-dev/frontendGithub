@@ -1,15 +1,16 @@
 import { useState } from "react";
-import type { Book } from "../types/Book";
+import type { BookType } from "../types/Book";
+import styles from "./BookForm.module.css";
 
 type BookFormProps = {
-  onAddBook: (book: Book) => void;
+  onAddBook: (book: BookType) => void;
 };
 
 export const BookForm = ({ onAddBook }: BookFormProps) => {
   const [name, setName] = useState("");
   const [author, setAuthor] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!name || !author) return;
@@ -25,7 +26,9 @@ export const BookForm = ({ onAddBook }: BookFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form 
+    className={styles.form}
+    onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Título do livro"
@@ -40,7 +43,7 @@ export const BookForm = ({ onAddBook }: BookFormProps) => {
         onChange={(e) => setAuthor(e.target.value)}
       />
 
-      <button type="submit">Adicionar</button>
+      <button className={styles.button} type="submit">Adicionar</button>
     </form>
   );
 };

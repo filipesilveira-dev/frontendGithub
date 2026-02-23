@@ -1,10 +1,12 @@
 import { memo } from "react";
-import type { Book } from "../types/Book";
+import type { BookType } from "../types/Book";
+import { Book } from 'lucide-react';
+import styles from "./BookItem.module.css";
 
 type BookItemProps = {
-  book: Book;
+  book: BookType;
   onDeleteBook: (id: string) => void;
-  onChangeBookStatus: (book: Book) => void;
+  onChangeBookStatus: (book: BookType) => void;
 };
 
 function BookItem({
@@ -13,15 +15,18 @@ function BookItem({
   onChangeBookStatus,
 }: BookItemProps) {
   return (
-    <li>
-      <span>{book.name}</span> - <span>{book.author}</span>
+    <li className={styles.li}>
+      <div className={styles["book-div"]}>
+        <Book/>
+        <div><span>{book.name}</span> - <span>{book.author}</span></div>
+      </div>
 
-      <div>
-        <button onClick={() => book._id && onChangeBookStatus(book)}>
+      <div className={styles["btn-div"]}>
+        <button className={styles.button} onClick={() => book._id && onChangeBookStatus(book)}>
           {book.isRead ? "Lido ✅" : "Marcar como lido"}
         </button>
 
-        <button onClick={() => book._id && onDeleteBook(book._id)}>
+        <button className={styles.button} onClick={() => book._id && onDeleteBook(book._id)}>
           Remover
         </button>
       </div>
