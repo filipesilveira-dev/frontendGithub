@@ -8,4 +8,3 @@
 - **Lucide**: biblioteca de ícones e símbolos para React
 - **Mobile First**: estilização iniciada por telas menores
 - **Lifting State Up**: estado *books* movido para App()
-- 
