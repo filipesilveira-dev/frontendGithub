@@ -1,5 +1,6 @@
-import {Filme} from "@/types/types"
+import type {Filme} from "@/types/types"
 import Card from "../Card"
+import styles from "./Grid.module.css"
 
 type Props ={
     filmes: Filme[]
@@ -8,7 +9,7 @@ type Props ={
 const Grid = ({filmes} : Props)=>{
     return(
         // Local onde aparecerão os filmes. Serão renderizados tantos componentes "Card", que representará cada filme, quanto houver na lista (array) de filmes
-        <section>
+        <section className={styles.grid}>
             {/* "key" para identificar da filme da lista e props "filme" passada para filho Card */}
             {filmes.map(filme=> <Card key={filme.id} filme={filme}/>)}
         </section>
