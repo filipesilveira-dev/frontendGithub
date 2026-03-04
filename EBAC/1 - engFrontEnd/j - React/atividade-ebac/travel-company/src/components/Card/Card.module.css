@@ -1,0 +1,40 @@
+.card {
+  background-color: #1F3C5C;
+  border-radius: 12px;
+  /* Qualquer conteúdo que ultrapasse os limites do elemento será ocultado */
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  /* O transform que ocorre com o hover transiciona de maneira mais suave (leva uma pouco de tempo para acontecer por completo */
+  transition: transform 0.3s;
+  padding: 0.5rem;
+}
+
+.card:hover {
+  /* Ao colocar o ponteiro do mouse em cima, ocorre uma transformação de escala (aumenta levemente de tamanho */
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+.card__img {
+  object-fit: cover;
+}
+
+.card__poster {
+  width: 100%;
+  display: block;
+}
+
+.card__info {
+  padding: 1rem;
+}
+
+.card__title {
+  font-size: 1.1rem;
+  color: white;
+  margin: 0 0 0.5rem 0;
+}
+
+.card__description {
+  font-size: 0.9rem;
+  color: #aaa;
+}

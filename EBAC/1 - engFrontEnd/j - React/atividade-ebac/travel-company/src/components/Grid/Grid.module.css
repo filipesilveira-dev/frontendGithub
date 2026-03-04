@@ -1,0 +1,11 @@
+.grid{
+    display: grid;
+    /* 
+    - O "repeat" cria coluinas que se repetem automaticamente. 
+    - O auto-fill preencha automaticamente o container com o maior número possível de colunas (ou linhas) de uma tamanho definido, sem transbordar o container
+    - O tamanho mínimo da coluna será de 180px e o máximo será de 1 fração do grid*/
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    background-color: #F4F1EA;
+}
