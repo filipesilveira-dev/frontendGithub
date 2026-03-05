@@ -1,5 +1,5 @@
 .card {
-  background-color: #1F3C5C;
+  background-color: #1f3c5c;
   border-radius: 12px;
   /* Qualquer conteúdo que ultrapasse os limites do elemento será ocultado */
   overflow: hidden;
@@ -7,6 +7,7 @@
   /* O transform que ocorre com o hover transiciona de maneira mais suave (leva uma pouco de tempo para acontecer por completo */
   transition: transform 0.3s;
   padding: 0.5rem;
+  min-width: 10rem;
 }
 
 .card:hover {
@@ -25,7 +26,9 @@
 }
 
 .card__info {
-  padding: 1rem;
+  padding: 0.5rem;
+  min-height: 7.25rem;
+  text-align: center;
 }
 
 .card__title {

@@ -1,6 +1,6 @@
 import { Destination } from "@/types/types";
 import styles from "@/components/Grid/Grid.module.css"
-import Card from "../Card";
+import Card from "../CardDestino";
 
 type Props ={
     destinations: Destination[],

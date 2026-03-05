@@ -1,0 +1,38 @@
+.verona__container {
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f1ea;
+}
+
+.verona__text {
+  padding: 0 2rem 2rem 2rem;
+  text-align: justify;
+}
+
+.verona__img {
+  padding: 0 2rem 2rem 2rem;
+}
+
+.verona__text {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+@media (min-width: 1024px) {
+  .verona__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  .verona__text {
+    padding: 2rem;
+    text-align: justify;
+  }
+
+  .verona__img {
+    max-height: 90%;
+    max-width: 70%;
+    padding-bottom: 0;
+    margin: auto;
+  }
+}
