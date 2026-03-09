@@ -1,0 +1,46 @@
+.detalhes{
+    padding: 2.5rem;
+    max-width: 60rem;
+    margin: auto;
+}
+
+.detalhes__container{
+    display: flex;
+    gap: 2rem;
+    background-color: #1f1f1f;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+.detalhes__img{
+    width: 18.75rem;
+    height: 25rem;
+     border-radius: .5rem;
+     object-fit: cover;
+}
+
+.detalhes__info{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.detalhes__info h2{
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #e50914;
+}
+
+.detalhes__info p{
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #ddd;
+}
+
+.detalhes__voltar{
+    display: block;
+    text-align: right;
+    margin-bottom: 1.3rem;
+    color: #e50914;
+    font-weight: 500;
+}

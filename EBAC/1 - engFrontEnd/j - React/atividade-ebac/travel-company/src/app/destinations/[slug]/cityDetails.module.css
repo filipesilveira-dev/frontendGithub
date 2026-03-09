@@ -1,35 +1,32 @@
-.veneza__container {
+.cityDetails__container {
   display: flex;
   flex-direction: column;
-  background-color: #F4F1EA;
+  background-color: #f4f1ea;
 }
 
-.veneza__text {
+.cityDetails__text {
   padding: 0 2rem 2rem 2rem;
   text-align: justify;
-}
-
-.veneza__img {
-  padding: 0 2rem 2rem 2rem;
-}
-
-.veneza__text {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.cityDetails__img {
+  padding: 0 2rem 2rem 2rem;
+}
+
 @media (min-width: 1024px) {
-  .veneza__container {
+  .cityDetails__container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
   }
 
-  .veneza__text {
-  padding: 2rem;
-  text-align: justify;
-}
+  .cityDetails__text {
+    padding: 2rem;
+    text-align: justify;
+  }
 
-  .veneza__img {
+  .cityDetails__img {
     max-height: 90%;
     max-width: 70%;
     padding-bottom: 0;
