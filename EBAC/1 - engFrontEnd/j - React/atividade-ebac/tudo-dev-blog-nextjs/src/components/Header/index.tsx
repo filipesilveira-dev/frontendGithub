@@ -5,9 +5,14 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.header__container}>
-        <h1 className={styles.header__logo}>
-          <Link href="/">Tudo Dev</Link>
-        </h1>
+        <Link href="/">
+          <img
+            className={styles.header__logo}
+            src="./tudoDevBlogLogo.png"
+            alt=""
+          />
+        </Link>
+
         <nav className={styles.header__nav}>
           {/* "Link" é um componente, recurso do next.js, com o qual o next.js intercepta a navegação e faz apenas a troca do conteúdo necessário e que:
                         - Permite navegação sem recarregar a página
@@ -17,9 +22,8 @@ const Header = () => {
                     */}
           <Link href="/">Início</Link>
           {/* Pasta criada em app para receber o arquivo que será renderizado ao se clicar no Link */}
-          <Link href="/filmes/em-alta">Em alta</Link>
-          <Link href="/filmes/populares">Populares</Link>
-          <Link href="/filmes/top-filmes">Top filmes</Link>
+          <Link href="/filmes/em-alta">Mais recentes</Link>
+          <Link href="/filmes/populares">Mais lidos</Link>
         </nav>
       </div>
     </header>

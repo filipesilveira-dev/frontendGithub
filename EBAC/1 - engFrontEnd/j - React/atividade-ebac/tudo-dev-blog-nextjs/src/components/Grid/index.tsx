@@ -1,5 +1,5 @@
 import type {Article} from "@/types/types"
-//import Card from "../Card"
+import Card from "../Card"
 import styles from "./Grid.module.css"
 
 type Props ={
@@ -12,9 +12,7 @@ const Grid = ({articles} : Props)=>{
         // Local onde aparecerão os filmes. Serão renderizados tantos componentes "Card", que representará cada filme, quanto houver na lista (array) de filmes
         <section className={styles.grid}>
             {/* "key" para identificar da filme da lista e props "filme" passada para filho Card */}
-            {/* {articles.map(article=> <Card key={article.id} article={article}/>)} */}
-            Verificando se articles foi importado em Grid
-            {artigo?.title} OK
+            {articles.map(article=> <Card key={article.id} article={article}/>)}
         </section>
     )
 }
