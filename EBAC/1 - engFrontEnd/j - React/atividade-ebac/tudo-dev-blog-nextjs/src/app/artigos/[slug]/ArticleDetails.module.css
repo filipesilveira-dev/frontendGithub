@@ -1,0 +1,48 @@
+.detalhes {
+  padding: 2.5rem;
+  max-width: 60rem;
+  margin: auto;
+  background-color: #f1f5f9;
+}
+
+.detalhes__container {
+  display: flex;
+  gap: 2rem;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.detalhes__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.detalhes__info p {
+  font-size: 1.05rem;
+  text-align: justify;
+  line-height: 1.6;
+  color: #0f172a;
+}
+
+.detalhes__voltar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  color: #0f172a;
+  font-weight: bold;
+  max-height: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  /* O transform que ocorre com o hover transiciona de maneira mais suave (leva uma pouco de tempo para acontecer por completo */
+  transition: transform 0.3s;
+}
+
+.detalhes__voltar:hover {
+  /* Ao colocar o ponteiro do mouse em cima, ocorre uma transformação de escala (aumenta levemente de tamanho */
+  transform: scale(1.02);
+  color: #38bdf8
+}

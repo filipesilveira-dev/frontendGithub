@@ -12,7 +12,7 @@ const articlesWithoutSlug = [
   },
   {
     id: "2",
-    title: "Como Funciona o Fetch de Dados no Next.js",
+    title: "Como Funciona o Fetch de Dados no Next.js?",
     author: "Gary P. Theodor",
     publication: "março de 2026",
     shortContent: "Veja as principais estratégias de busca de dados no Next.js e como elas impactam performance e atualização de conteúdo.",
@@ -36,7 +36,7 @@ const articlesWithoutSlug = [
   },
   {
     id: "5",
-    title: "Por Que Utilizar Slugs em URLs de Artigos",
+    title: "Por Que Utilizar Slugs em URLs de Artigos?",
     author: "Gary P. Theodor",
     publication: "março de 2026",
     shortContent: "Entenda como slugs deixam URLs mais amigáveis para usuários e motores de busca.",

@@ -9,3 +9,7 @@
     margin: 0px;
     font-size: 0.875rem;
 }
+
+.footer__text a:hover{
+    color: #38bdf8;
+}
