@@ -1,4 +1,6 @@
+// Importa a ferramenta nativa de next Link
 import Link from "next/link";
+// Importa a estilização
 import styles from "./Header.module.css";
 
 const Header = () => {

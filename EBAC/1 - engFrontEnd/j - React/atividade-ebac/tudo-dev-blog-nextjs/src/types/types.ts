@@ -1,4 +1,4 @@
-
+// Tipagem (interface) typescript para o artigo
 export interface Article {
   id: string;
   title: string;

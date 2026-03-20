@@ -1,6 +1,7 @@
+// Importação da biblioteca slugify para criação de slug com base no title do artigo
 import slugify from 'slugify';
 
-// Criação do mock data com os objetos dos artigos e suas propriedades, mas sem o slug (poderia ser criado com slug vazio também - " ")
+// Criação do mock data: array com os objetos dos artigos e suas propriedades, mas sem o slug (poderia ser criado com slug vazio também - " ")
 const articlesWithoutSlug = [
   {
     id: "1",

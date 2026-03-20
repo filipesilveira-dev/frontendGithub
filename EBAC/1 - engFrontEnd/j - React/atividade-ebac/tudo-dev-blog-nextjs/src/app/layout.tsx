@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+// Importação do commmponenten reutilizável Header
 import Header from "../components/Header";
+// Importação do componente reutilizável Footer
 import Footer from "../components/Footer";
 
 export const metadata: Metadata = {
