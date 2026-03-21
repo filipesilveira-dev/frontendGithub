@@ -1,0 +1,15 @@
+.footer{
+    background-color: #4c6388;
+    text-align: center;
+    padding: 1.5rem 0;
+    color: #CBD5F5;
+}
+
+.footer__text{
+    margin: 0px;
+    font-size: 0.875rem;
+}
+
+.footer__text a:hover{
+    color: #38bdf8;
+}
