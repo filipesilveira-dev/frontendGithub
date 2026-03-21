@@ -21,6 +21,10 @@
   gap: 1rem;
 }
 
+.detalhes__info h2{
+  color: black;
+}
+
 .detalhes__info p {
   font-size: 1.05rem;
   text-align: justify;
