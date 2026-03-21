@@ -7,6 +7,7 @@
 
 .detalhes__container {
   display: flex;
+  flex-direction: column-reverse;
   gap: 2rem;
   background-color: #ffffff;
   padding: 1.5rem;
@@ -44,5 +45,11 @@
 .detalhes__voltar:hover {
   /* Ao colocar o ponteiro do mouse em cima, ocorre uma transformação de escala (aumenta levemente de tamanho */
   transform: scale(1.02);
-  color: #38bdf8
+  color: #38bdf8;
+}
+
+@media (min-width: 768px) {
+  .detalhes__container {
+    flex-direction: row;
+  }
 }
