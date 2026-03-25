@@ -1,6 +1,6 @@
 # Tudo Dev Blog
 
-Página web de um blog com lista de artigos. Cada card de artigo é carregado dinamicamente com rotas personalizadas. Seus dados vêm de uma API fake, simulada com uso de um banco de dados fake. Boas práticas de SEO utilizando as funcionalidades do App Router aplicadas.
+Blog desenvolvido com Next.js para exibição de artigos técnicos, utilizando rotas dinâmicas, Server Components e geração estática de páginas. Demonstrar na prática conceitos modernos como data fetching no servidor, SSG/ISR e organização em camadas simulando consumo de API.
 
 ## Deploy
 
@@ -11,25 +11,27 @@ Acesse o projeto publicado: [https://frontend-github-iota.vercel.app/]
 - Next.js
 - React
 - CSS Modules
-- Axios
 
 ## Como rodar o projeto localmente
 
 1. Clone o repositório:
-   git clone  https://github.com/filipesilveira-dev/frontendGithub/tree/main/tudo-dev-blog-nextjs
+   git clone https://github.com/filipesilveira-dev/frontendGithub.git
 
-2. Instale as dependências:
+2. Acesse a pasta do projeto:
+   cd frontendGithub/tudo-dev-blog-nextjs
+
+3. Instale as dependências:
    npm install
 
-3. Rode o projeto:
+4. Rode o projeto:
    npm run dev
 
-O app vai estar disponível em http://localhost:3000
+O app estará disponível em http://localhost:3000
 
 ## Como contribuir
 
-- Implementação do endpoint POST no servidor fake de API
-- Implementação do serviço de POST (ainda que momentaneamente não persistente)
+- Adição de sistema de busca e filtros por categoria
+- Criação de sistema de criação/edição de artigos (CRUD completo)
 
 ## Autor
 
