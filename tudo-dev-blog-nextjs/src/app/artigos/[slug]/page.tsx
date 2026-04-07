@@ -11,7 +11,7 @@ import Title from "@/components/Title";
 // Importação da função, que retorna a lista de artigos, e da função que busca um artigo pelo slug (em substituição ao uso de "articles" diretamente aqui)
 import { getArticles, getArticleBySlug } from "@/services/articles.service";
 
-// Utilização do force-static, pois dificilmente o conteúdo dos artigos mudarão (edição de um artigo já postado). Os dados ficarão salvos em cache. 
+// Utilização do force-static, pois dificilmente o conteúdo dos artigos mudarão (edição de um artigo já postado). Os dados ficarão salvos em cache.
 export const dynamic = "force-static";
 
 // Define quais páginas serão geradas no build
@@ -75,38 +75,44 @@ const ArticleDetail = async ({ params }: Props) => {
   // Desestruturação necessária para utilizar o slug (ou outra propriedade)
   const { slug } = await params;
 
+  // Declaração de variáveis para receberem os valores vindo de "try" para serem utilizados no return
+  let title = "";
+  let author = "";
+  let content = "";
+
   // Por se tratar de requisição assíncrona, será necessário o tratamento de erros try/catch. Será tentado primeiro então receber o conteúdo da promise de "getArticleBySlug(slug)", que no caso seria "data: article". Caso receba o conteúdo, será atribuído à "details" o conteúdo de "data: article", que no caso srá o objeto  "article". Dessa maneira, o código continua para o "return", retornando a estrutura da página contendo os detalhes do artigo. Caso contrário, caso não seja retornado um "data: article" (artigo não existe - undefined), será chamada a função "notFound()".
   try {
     // Chamada da função criada em "services" para buscar um artigo com base no seu slug. Retorna uma promise
     const article = await getArticleBySlug(slug);
     const details = article.data;
 
-    // Do objeto retornado em "details", ou seja o artigo selecionado para esta página, três de suas propriedades são desestruturadas, tornando-as variáveis de escopo local.
-    const { title, author, content } = details;
-
-    return (
-      <>
-        <div className={styles.detalhes}>
-          <div className={styles.detalhes__container}>
-            {/* O uso do Link aqui previne que a página toda seja recarregada como ocorre com <a> */}
-            <Link className={styles.detalhes__voltar} href={"/"}>
-              <span>Voltar</span>
-            </Link>
-            <section>
-              <article className={styles.detalhes__info}>
-                <Title title={title} />
-                <p>{content}</p>
-                <h6>Autor: {author}</h6>
-              </article>
-            </section>
-          </div>
-        </div>
-      </>
-    );
+    // Atribui às respectivas variáveis os valores obtidos após o "try" buscar os dados. Esses dados serão utilizados no "return"
+    title = details.title;
+    author = details.author;
+    content = details.content;
   } catch {
     // Será retornada uma função nativa do next.js que direciona para a página criada em artigos/ chamada not-found.tsx
     return notFound();
   }
+  return (
+    <>
+      <div className={styles.detalhes}>
+        <div className={styles.detalhes__container}>
+          {/* O uso do Link aqui previne que a página toda seja recarregada como ocorre com <a> */}
+          <Link className={styles.detalhes__voltar} href={"/"}>
+            <span>Voltar</span>
+          </Link>
+          <section>
+            <article className={styles.detalhes__info}>
+              <Title title={title} />
+              <p>{content}</p>
+              <h6>Autor: {author}</h6>
+            </article>
+          </section>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default ArticleDetail;

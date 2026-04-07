@@ -4,6 +4,7 @@ import type { Article } from "@/types/types";
 import styles from "./Card.module.css";
 // Importação da ferramenta Link nativa de next
 import Link from "next/link";
+import Image from "next/image";
 
 // Tipagem das props recebidas do componente pai (Grid)
 type Props = {
@@ -22,7 +23,7 @@ const Card = ({ article }: Props) => {
       {/* Link, ao contrário de <a>, faz apenas a troca necessária, sem carregar toda a página */}
       <Link href={`/artigos/${slug}`}>
         <div className={styles.card__link__container}>
-          <img
+          <Image
             className={styles.card__poster}
             src="/imgPapel.png"
             alt="Imagem de folha de papel"
