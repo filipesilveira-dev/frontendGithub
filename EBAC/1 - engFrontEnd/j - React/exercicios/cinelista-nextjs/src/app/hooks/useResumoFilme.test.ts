@@ -26,5 +26,6 @@ test("Retorna overview inteiro se menor que o limite", () => {
 test("Retorna overview cortado e reticências se passar do limite", () => {
   const texto = "Lorem ipsum dolor sit amet, consectetur adipsing elit";
   const { result } = renderHook(() => useResumoFilme(texto, 10));
+  // Aqui foi utilizado "toBe" ao invés de "toEqual" por ser esperada uma "string". Caso fosse esperado algo com "{}" ou "[]", seria mais indicado p "toEqual"
   expect(result.current).toBe("Lorem ipsu...");
 });
