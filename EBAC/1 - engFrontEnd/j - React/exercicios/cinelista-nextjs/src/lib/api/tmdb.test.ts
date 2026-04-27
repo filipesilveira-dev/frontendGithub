@@ -5,6 +5,7 @@ jest.mock("./axios");
 
 test("Retorna os filmes em cartaz", async ()=>{
     const mockResults = [{id: 1, title: "Matrix"}];
+    // Aqui está sendo utilizado o "mockResolvedValue" (retorna uma Promise que já foi resolvida) ao invés de "mockReturnValue" (retorna um valor imediatamente), pois trata-se de uma função assíncrona
     (tmdbApi.get as jest.Mock).mockResolvedValue({
         // axios sempre envelopa a resposta do servidor em uma chave chamada data
         data: {results: mockResults},
