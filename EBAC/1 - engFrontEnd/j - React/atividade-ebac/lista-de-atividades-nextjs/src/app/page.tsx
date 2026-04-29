@@ -1,5 +1,5 @@
 import ListaTarefas from "@/components/ListaTarefas";
-import NovaTarefa from "@/components/Novatarefa";
+import NovaTarefa from "@/components/NovaTarefa";
 
 
 export default function Home() {

@@ -72,7 +72,8 @@ export default function ToDoList() {
         console.error("Falha ao deletar tarefa", error);
         alert("Não foi possível deletar a tarefa.");
       });
-  }, []);
+      // o React compiler exige o setTasks como dependência, mesmo sendo estável (não altera), pois se trata de uma variável externa em um useCallback
+  }, [setTasks]);
 
     // função criada para alternar (toggle) a propriedade, no backend, "isCompleted" da task clicada como concluída
   const changeTaskStatus = (taskId) => {
