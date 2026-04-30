@@ -1,16 +1,15 @@
 // client side component: especifica ao next que este arquivo, por utilizar estados e hook, faz parte do lado do cliente 
 "use client";
 
-import { useTarefaStore } from "@/store/useTarefaStore";
 import { SubmitEvent, useState } from "react";
 
-export default function NovaTarefa() {
+interface NovaTarefaProps{
+  onAddTarefa: (tarefa: string)=>void;
+}
+
+export default function NovaTarefa({onAddTarefa}: NovaTarefaProps) {
   // Estado local para controlar o que é inserido pelo usuário
   const [novaTarefa, setNovaTarefa] = useState("");
-
-  // const addTarefa = useTarefaStore((state) => state.addTarefa);
-  // Desestruturação de objeto
-  const { addTarefa } = useTarefaStore();
 
   const handleSubmit = (e: SubmitEvent) => {
     // evita o recarregamento completo da página
@@ -20,7 +19,7 @@ export default function NovaTarefa() {
     if (novaTarefa.trim() === "") return;
 
     // Envio de formulário e renderização: utiliza o useState local do Input e passa como parâmetro da função
-    addTarefa(novaTarefa.trim());
+    onAddTarefa(novaTarefa.trim());
 
     // Atualiza o estado local como vazio para receber a próxima tarefa
     setNovaTarefa("");

@@ -1,12 +1,11 @@
-import ListaTarefas from "@/components/ListaTarefas";
-import NovaTarefa from "@/components/NovaTarefa";
-
+// Server component por padrão
+import ListaTarefasContainer from "@/components/ListaTarefasContainer";
+import {tasks} from "@/lib/tasks";
 
 export default function Home() {
   return (
     <>
-    <NovaTarefa/>
-    <ListaTarefas/>
+    <ListaTarefasContainer tarefas = {tasks}/>
     </>
   )
 }
