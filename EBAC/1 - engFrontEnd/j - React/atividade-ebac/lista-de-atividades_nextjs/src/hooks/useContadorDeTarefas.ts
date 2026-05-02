@@ -1,19 +1,20 @@
 import { useState } from "react";
 
-export default function useContadorDeTarefas(initialValue = ""){
+interface Tarefa {
+  id: number;
+  title: string;
+}
+
+export default function useContadorDeTarefas(initialValue = []) {
     // substitui o uso de um useState local
-    const [value, setValue] = useState(initialValue);
+    const [tasks, setTasks] = useState<Tarefa[]>(initialValue);
 
-    // usado em AddTask
-    const onChange = (e) => {
-        setValue(e.target.value);
-    }
-
-    const clean = () => setValue("");
+    // contador de tarefas: utiliza o length do array de tarefas para contar quantas tarefas existem. É atualizado automaticamente toda vez que o estado de tarefas é atualizado, garantindo que o contador esteja sempre correto.  
+    const contador = tasks.length;
 
     return{
-        value,
-        onChange,
-        clean
+        tasks,
+        setTasks,
+        contador,
     };
 }

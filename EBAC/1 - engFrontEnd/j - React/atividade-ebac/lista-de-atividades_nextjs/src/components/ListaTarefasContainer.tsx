@@ -1,25 +1,17 @@
 "use client";
-
-import { useState } from "react";
 import ListaTarefas from "./ListaTarefas";
 import NovaTarefa from "./NovaTarefa";
 import useContadorDeTarefas from "../hooks/useContadorDeTarefas";
 
 
-interface Tarefa {
-  id: number;
-  title: string;
-}
+export default function ListaTarefasContainer() {
+  // Desestruturação do hook personalizado para obter as tarefas, a função de atualização e o contador
+  const { tasks, setTasks, contador } = useContadorDeTarefas();
 
-interface ListaTarefasContainerProps {
-  tarefas: Tarefa[];
-}
-
-export default function ListaTarefasContainer({tarefas}: ListaTarefasContainerProps) {
-  const [tasks, setTasks] = useState<Tarefa[]>(tarefas);
-
+  // Função para adicionar uma nova tarefa, que é passada como prop para o componente NovaTarefa
   const addTarefa = (title: string) => {
     const nova = { id: Date.now(), title: title };
+    // Atualiza o estado global de tarefas utilizando a função setTasks do hook personalizado, adicionando a nova tarefa ao array existente
     setTasks([...tasks, nova]);
   };
   
@@ -27,7 +19,7 @@ export default function ListaTarefasContainer({tarefas}: ListaTarefasContainerPr
     <>
       <NovaTarefa onAddTarefa = {addTarefa}/>
       <ListaTarefas tarefas = {tasks}/>
-      <span>{tasks.length} tarefas</span>
+      <span>{contador} tarefas</span>
     </>
   );
 }
