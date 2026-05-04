@@ -17,20 +17,30 @@ interface ListaTarefasProps {
 export default function ListaTarefas({ tarefas, contador }: ListaTarefasProps) {
   return (
     <>
-      {/* Caso "tarefas" esteja vazia, renderiza o <p> com a mensagem "nenhuma tarefa cadastrada" */}
-      {tarefas.length === 0 ? 
-        <p>Nenhuma tarefa cadastrada</p>
-       :
-        // Caso contrário, renderiza a lista de tarefas utilizando o componente ItemTarefa para cada item do array "tarefas"
-        <ul>
+      {/* Mensagem de lista vazia com estilo centralizado e suave */}
+      {tarefas.length === 0 ? (
+        <p className="text-center text-gray-500 py-10 italic">
+          Nenhuma tarefa cadastrada
+        </p>
+      ) : (
+        // w-full garante que a lista use o espaço do container pai; max-w-md limita em telas grandes
+        <ul className="w-full max-w-md space-y-2">
           {tarefas.map((tarefa) => (
             <ItemTarefa key={tarefa.id} tarefa={tarefa} />
           ))}
         </ul>
-      }
-      
-      {/* Criado para o contador de tarefas */}
-      <span data-testid="contador-valor">{contador} tarefa(s)</span>
+      )}
+
+      {/* Contador responsivo: centralizado no mobile e com margem superior para respiro */}
+
+      <div className="w-full flex justify-center">
+        <span
+          data-testid="contador-valor"
+          className="text-xs font-bold uppercase tracking-wider bg-gray-200 text-gray-600 px-3 py-1.5 rounded-full inline-block"
+        >
+          {contador} tarefa(s)
+        </span>
+      </div>
     </>
   );
 }

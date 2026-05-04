@@ -20,8 +20,13 @@ export default function ListaTarefasContainer() {
   
   return (
     <>
-      <NovaTarefa onAddTarefa = {addTarefa}/>
-      <ListaTarefas tarefas = {tasks} contador = {contador}/>
+      <main className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+        <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
+          <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">Minhas Atividades</h1>
+          <NovaTarefa onAddTarefa = {addTarefa}/>
+          <ListaTarefas tarefas = {tasks} contador = {contador}/>
+        </div>
+      </main>
     </>
   );
 }
