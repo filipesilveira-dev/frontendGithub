@@ -2,10 +2,7 @@
 "use client";
 
 import { SubmitEvent, useState } from "react";
-
-interface NovaTarefaProps{
-  onAddTarefa: (tarefa: string)=>void;
-}
+import { NovaTarefaProps } from "@/types/type";
 
 export default function NovaTarefa({onAddTarefa}: NovaTarefaProps) {
   // Estado local para controlar o que é inserido pelo usuário

@@ -10,14 +10,27 @@ interface Tarefa {
 
 interface ListaTarefasProps {
   tarefas: Tarefa[];
+  contador: number;
 }
 
-export default function ListaTarefas({ tarefas }: ListaTarefasProps) {
+// Recebe props de ListaTarefasContainer
+export default function ListaTarefas({ tarefas, contador }: ListaTarefasProps) {
   return (
-    <ul>
-      {tarefas.map((tarefa) => (
-        <ItemTarefa key={tarefa.id} tarefa={tarefa} />
-      ))}
-    </ul>
+    <>
+      {/* Caso "tarefas" esteja vazia, renderiza o <p> com a mensagem "nenhuma tarefa cadastrada" */}
+      {tarefas.length === 0 ? 
+        <p>Nenhuma tarefa cadastrada</p>
+       :
+        // Caso contrário, renderiza a lista de tarefas utilizando o componente ItemTarefa para cada item do array "tarefas"
+        <ul>
+          {tarefas.map((tarefa) => (
+            <ItemTarefa key={tarefa.id} tarefa={tarefa} />
+          ))}
+        </ul>
+      }
+      
+      {/* Criado para o contador de tarefas */}
+      <span data-testid="contador-valor">{contador} tarefa(s)</span>
+    </>
   );
 }
