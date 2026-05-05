@@ -4,11 +4,35 @@
 import ListaTarefas from "./ListaTarefas";
 import NovaTarefa from "./NovaTarefa";
 import useContadorDeTarefas from "../hooks/useContadorDeTarefas";
-
+import { useEffect, useState } from "react";
+import {initialTasks} from "@/lib/initialTasks";
 
 export default function ListaTarefasContainer() {
   // Desestruturação do hook personalizado para obter as tarefas, a função de atualização e o contador. Importado aqui por conta de addTarefa
   const { tasks, setTasks, contador } = useContadorDeTarefas();
+  // State para controlar o estado de carregamento das tarefas, inicialmente definido como true para indicar que as tarefas estão sendo carregadas
+  const [loading, setLoading] = useState(true);
+
+  // Simulação de carregamento de tarefas utilizando useEffect, que é executado apenas uma vez após a montagem do componente (devido ao array de dependências vazio). Dentro do useEffect, é definida uma função assíncrona fetchTasks que simula uma chamada de API com um delay de 1 segundo. Após o delay, o estado de tarefas é atualizado com os dados importados do arquivo initialTasks, e o estado de carregamento é definido como false para indicar que as tarefas foram carregadas.
+  useEffect(() => {
+    // Simulando uma chamada de API com fetch
+    const fetchTasks = async () => {
+      try {
+        // Cria um objeto Promise que resolve após um delay de 1 segundo, simulando o tempo de resposta de uma API
+        await new Promise((resolve) => setTimeout(resolve, 1000)); // Delay de 1 segundo
+        // Define o estado com os dados do arquivo que contém as tarefas iniciais, importado do arquivo initialTasks
+        setTasks(initialTasks); 
+        // Tratamento de erros: caso ocorra algum erro durante o processo de carregamento das tarefas, ele será capturado e exibido no console para facilitar a depuração
+      } catch (error) {
+        console.error("Erro ao carregar tarefas", error);
+      } finally {
+        // Altera o estado de carregamento para false, independentemente do sucesso ou falha da operação de carregamento
+        setLoading(false);
+      }
+    };
+    // Chama a função de carregamento das tarefas
+    fetchTasks();
+  }, [setTasks]);
 
   // Função para adicionar uma nova tarefa, que é passada como prop para o componente NovaTarefa
   const addTarefa = (title: string) => {
@@ -18,14 +42,17 @@ export default function ListaTarefasContainer() {
     // O uso de prev dentro do setTasks garante que a atualização seja feita com base no estado anterior, evitando problemas de concorrência
     setTasks((prev) => [...prev, nova]);
   };
-  
+
+  if (loading) return <p>Carregando tarefas...</p>;
   return (
     <>
       <main className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
         <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
-          <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">Minhas Atividades</h1>
-          <NovaTarefa onAddTarefa = {addTarefa}/>
-          <ListaTarefas tarefas = {tasks} contador = {contador}/>
+          <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+            Minhas Atividades
+          </h1>
+          <NovaTarefa onAddTarefa={addTarefa} />
+          <ListaTarefas tarefas={tasks} contador={contador} />
         </div>
       </main>
     </>
