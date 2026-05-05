@@ -32,6 +32,7 @@ export default function ListaTarefasContainer() {
     };
     // Chama a função de carregamento das tarefas
     fetchTasks();
+    // Preenchimento de dependências necessário para evitar warnings do React, garantindo que a função setTasks seja incluída como dependência do useEffect, mesmo que ela seja estável e não cause re-renderizações desnecessárias
   }, [setTasks]);
 
   // Função para adicionar uma nova tarefa, que é passada como prop para o componente NovaTarefa
@@ -43,7 +44,7 @@ export default function ListaTarefasContainer() {
     setTasks((prev) => [...prev, nova]);
   };
 
-  if (loading) return <p>Carregando tarefas...</p>;
+  if (loading) return <p>Carregando atividades...</p>;
   return (
     <>
       <main className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
