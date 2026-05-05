@@ -15,7 +15,8 @@ export default function ListaTarefasContainer() {
     // Ao ser acionada, a função cria um novo objeto "nova" com um id único (utilizando Date.now()) e o título da tarefa recebido como parâmetro
     const nova = { id: Date.now(), title: title };
     // Atualiza o estado global de tarefas utilizando a função setTasks do hook personalizado, adicionando a nova tarefa ao array existente
-    setTasks([...tasks, nova]);
+    // O uso de prev dentro do setTasks garante que a atualização seja feita com base no estado anterior, evitando problemas de concorrência
+    setTasks((prev) => [...prev, nova]);
   };
   
   return (

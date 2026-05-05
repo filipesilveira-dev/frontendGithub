@@ -20,6 +20,7 @@ export default function NovaTarefa({ onAddTarefa }: NovaTarefaProps) {
 
     // Atualiza o estado local como vazio para receber a próxima tarefa
     setNovaTarefa("");
+    focus(); // mantém o foco no input após adicionar a tarefa
   };
 
   return (

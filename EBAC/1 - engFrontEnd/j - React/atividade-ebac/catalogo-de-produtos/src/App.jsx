@@ -10,7 +10,7 @@ const API_URL = 'https://crudcrud.com/api/2cee8ec59dfa4dadb2db0ca8cbd15b4c/produ
 
 function App() {
   // variável que recebe os produtos fixos
-  const [fixedProduts, setFixedProducts] = useState([
+  const [fixedProduts] = useState([
     {
       id: 1,
       img: guitarImg,
