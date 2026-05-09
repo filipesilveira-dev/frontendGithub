@@ -9,7 +9,7 @@ describe("ListaTarefas - Renderização e Contador", () => {
     render(<ListaTarefas tarefas={[]} contador={0} />);
 
     // 2. Verifica a "Renderização dos elementos" (Estado Inicial)
-    const mensagemVazia = screen.getByText(/nenhuma tarefa cadastrada/i); // verifica o <p> de mensagem vazia
+    const mensagemVazia = screen.getByText(/nenhuma atividade cadastrada/i); // verifica o <p> de mensagem vazia
     const contador = screen.getByTestId("contador-valor"); // verifica o contador, que deve estar presente mesmo com a lista vazia
     expect(mensagemVazia).toBeInTheDocument(); // uso da testing library para verificar se a mensagem de lista vazia está presente no DOM
     expect(contador).toBeInTheDocument(); // uso da testing library para verificar se a mensagem de lista vazia está presente no DOM
@@ -19,3 +19,4 @@ describe("ListaTarefas - Renderização e Contador", () => {
     expect(contadorNoDom).toHaveTextContent("0"); // Espera-se que o tasks.length seja 0
   });
 });
+ 

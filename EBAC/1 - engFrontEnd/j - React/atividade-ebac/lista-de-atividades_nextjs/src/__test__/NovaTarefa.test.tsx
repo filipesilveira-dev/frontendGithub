@@ -2,6 +2,9 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import NovaTarefa from '@/components/NovaTarefa';
 
+// O jsdom (o ambiente que simula o navegador para o Jest) não implementa o método .focus() de forma nativa para disparar eventos complexos. Portanto, é necessário criar um mock para o método .focus() para evitar erros relacionados a ele durante os testes. O jest.fn() cria uma função simulada que pode ser monitorada e personalizada conforme necessário, garantindo que os testes possam ser executados sem falhas devido à ausência do método .focus() no ambiente de teste. Isso é especialmente importante para componentes que dependem de interações de foco para funcionar corretamente, como campos de input ou botões.  
+window.focus = jest.fn();
+
 // Describe funciona como um agrupador de testes, permitindo organizar os casos de teste relacionados a um componente ou funcionalidade específica. Ele ajuda a estruturar os testes de forma mais legível e compreensível, facilitando a identificação do que está sendo testado e o contexto em que os testes estão inseridos. Como se trata de um teste de NovaTarefa, o describe é utilizado para agrupar os testes relacionados à validação e submissão de tarefas.
 describe('NovaTarefa - Validação e Submissão', () => {
   // Cria o mock da função que o componente exige

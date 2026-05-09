@@ -20,7 +20,7 @@ export default function ListaTarefas({ tarefas, contador }: ListaTarefasProps) {
       {/* Mensagem de lista vazia com estilo centralizado e suave */}
       {tarefas.length === 0 ? (
         <p className="text-center text-gray-500 py-10 italic">
-          Nenhuma tarefa cadastrada
+          Nenhuma atividade cadastrada
         </p>
       ) : (
         // w-full garante que a lista use o espaço do container pai; max-w-md limita em telas grandes
