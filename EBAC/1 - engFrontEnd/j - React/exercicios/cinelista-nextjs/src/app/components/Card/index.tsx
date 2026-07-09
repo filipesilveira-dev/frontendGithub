@@ -2,6 +2,7 @@ import type { Filme } from "@/types/types";
 import styles from "./Card.module.css";
 import Link from "next/link";
 import { useResumoFilme } from "@/app/hooks/useResumoFilme";
+import Image from "next/image";
 
 // Tipagem das props recebidas do componente pai (Grid)
 type Props = {
@@ -26,7 +27,7 @@ const Card = ({ filme }: Props) => {
       {/* Link, ao contrário de <a>, faz apenas a troca necessária, sem carregar toda a página */}
       <Link href={`filmes/${id}`}>
         {/* "img" recebe como "src" a propriedade "imagem" do objeto filme. Trata-se do endereço de onde essa imagem virá (string) */}
-        <image
+        <Image
           className={styles.card__poster}
           // Variável contendo início do caminho para a imagem interpolada aqui, bem como o "poster_path" especifico de cada imagem
           src={`${process.env.NEXT_PUBLIC_TMDB_API_IMG_URL}${poster_path}`}
