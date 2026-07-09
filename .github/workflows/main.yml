@@ -13,6 +13,10 @@ jobs:
   build:
     #Imagem da máquina usada no CI
     runs-on: ubuntu-latest
+    # Define o caminho exato até a pasta do seu projeto Next.js
+    defaults:
+      run:
+        working-directory: .frontendGithub/EBAC/1 - engFrontEnd/j - React/exercicios/cinelista-nextjs
     #Passos que serão realizados
     steps:
       - name: Checkout do código
