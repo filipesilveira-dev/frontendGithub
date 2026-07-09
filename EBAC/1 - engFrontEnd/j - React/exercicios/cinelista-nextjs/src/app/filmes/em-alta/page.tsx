@@ -6,17 +6,16 @@ import { getNowPlaying } from "@/lib/api/tmdb";
 // - Dashboard (mostra métricas, vendas, relatórios)
 // - Página de perfil de usuário (notificações, mensagens, dados pessoais)
 // - Carrinho de compras (o conteúdo muda a cada ação do usuário)
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 // Componente que será renderizado ao ser clicado no link do menu de navegação (navbar) "Em alta"
 const FilmesEmAlta = async () => {
-
   const filmes = await getNowPlaying();
   return (
     <>
-        {/* Componente Title reaproveitado */}
+      {/* Componente Title reaproveitado */}
       <Title title="Filmes em Alta" />
-      <Grid filmes={filmes}/>
+      <Grid filmes={filmes} />
     </>
   );
 };

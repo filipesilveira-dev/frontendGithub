@@ -10,13 +10,12 @@ export const revalidate = 60;
 
 // Componente que será renderizado ao ser clicado no link do menu de navegação (navbar) "Populares"
 const FilmesPopulares = async () => {
-
   const filmes = await getPopularMovies();
   return (
     <>
-        {/* Componente Title reaproveitado */}
+      {/* Componente Title reaproveitado */}
       <Title title="Filmes Populares" />
-      <Grid filmes={filmes}/>
+      <Grid filmes={filmes} />
     </>
   );
 };

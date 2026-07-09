@@ -29,7 +29,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
-, "src/lib/filmes.js"  ],
+    "**/*.mts",
+    "src/lib/filmes.js"
+  ],
   "exclude": ["node_modules"]
 }

@@ -3,17 +3,17 @@ import { getNowPlaying } from "./tmdb";
 
 jest.mock("./axios");
 
-test("Retorna os filmes em cartaz", async ()=>{
-    const mockResults = [{id: 1, title: "Matrix"}];
-    // Aqui está sendo utilizado o "mockResolvedValue" (retorna uma Promise que já foi resolvida) ao invés de "mockReturnValue" (retorna um valor imediatamente), pois trata-se de uma função assíncrona
-    (tmdbApi.get as jest.Mock).mockResolvedValue({
-        // axios sempre envelopa a resposta do servidor em uma chave chamada data
-        data: {results: mockResults},
-    });
-    const filmes = await getNowPlaying();
-    // se tivesse sido utilizado o "toBe" ao invés de "toEqual", daria erro, pois o "toBe" verifica se os dois (filmes e mockResults) ocupam o mesmo lugar na memória (apesar de idênticos, ocupam lugares diferentes por estarem atribuídos a variáveis diferentes)
-    expect(filmes).toEqual(mockResults);
-})
+test("Retorna os filmes em cartaz", async () => {
+  const mockResults = [{ id: 1, title: "Matrix" }];
+  // Aqui está sendo utilizado o "mockResolvedValue" (retorna uma Promise que já foi resolvida) ao invés de "mockReturnValue" (retorna um valor imediatamente), pois trata-se de uma função assíncrona
+  (tmdbApi.get as jest.Mock).mockResolvedValue({
+    // axios sempre envelopa a resposta do servidor em uma chave chamada data
+    data: { results: mockResults },
+  });
+  const filmes = await getNowPlaying();
+  // se tivesse sido utilizado o "toBe" ao invés de "toEqual", daria erro, pois o "toBe" verifica se os dois (filmes e mockResults) ocupam o mesmo lugar na memória (apesar de idênticos, ocupam lugares diferentes por estarem atribuídos a variáveis diferentes)
+  expect(filmes).toEqual(mockResults);
+});
 
 /*
 Importação da instância axios criada

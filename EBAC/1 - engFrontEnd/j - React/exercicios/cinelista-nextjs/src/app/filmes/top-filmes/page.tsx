@@ -6,17 +6,16 @@ import { getTopMovies } from "@/lib/api/tmdb";
 // - Página institucional (sobre/, contato/, empresa/)
 // - Blog estático (blog/o-que-e-next ou blog/como-funciona-react)
 // - Landing pages
-export const dynamic = 'force-static';
+export const dynamic = "force-static";
 
 // Componente que será renderizado ao ser clicado no link do menu de navegação (navbar) "Top filmes"
 const TopFilmes = async () => {
-
   const filmes = await getTopMovies();
   return (
     <>
-        {/* Componente Title reaproveitado */}
+      {/* Componente Title reaproveitado */}
       <Title title="Top Filmes" />
-      <Grid filmes={filmes}/>
+      <Grid filmes={filmes} />
     </>
   );
 };
