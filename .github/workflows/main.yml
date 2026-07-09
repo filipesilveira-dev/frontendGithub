@@ -1,0 +1,43 @@
+#Nome do workflow, aparece na aba "Actions"
+name: Pipeline CI/CD
+#Definir quando o pipeline será disparado. Aqui especifica que, quando ocorrer um "push" na main branch, o pipeline será disparado.
+on: 
+  push:
+    branches:
+      -  main
+  workflow_dispatch: #habilitar o botão "Run workflow" no GitHub Actions
+
+#Conjunto de passos (steps) do pipeline que está sendo criado
+jobs:
+  #Primeiro job: build
+  build:
+    #Imagem da máquina usada no CI
+    runs-on: ubuntu-latest
+    # Define o caminho exato até a pasta do seu projeto Next.js
+    defaults:
+      run:
+        working-directory: "./EBAC/1 - engFrontEnd/j - React/exercicios/cinelista-nextjs"
+    #Passos que serão realizados
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v6
+
+      #Instala o Node na máquina que será criada para rodar o código
+      - name: Instalação do Node
+        uses: actions/setup-node@v4
+        with:
+          #Especifica a versão do Node
+          node-version: '20'
+          
+      - name: Instalação das dependências
+        run: npm install
+        
+        #Roda o build na máquina virtual criada
+      - name: Rodar o build
+        run: npm run build
+        #Especifica as variáveis que foram configuradas no GitHub Actions
+        env:
+          TMDB_API_URL: ${{ vars.TMDB_API_URL }}
+          TMDB_API_KEY: ${{secrets.TMDB_API_KEY}}
+          NEXT_PUBLIC_TMDB_API_IMG_URL: ${{ vars.NEXT_PUBLIC_TMDB_API_IMG_URL }}
+
