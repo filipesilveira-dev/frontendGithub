@@ -8,7 +8,7 @@ on:
     #Só dispara se os arquivos nessas pastas mudarem
     paths:
      #Só mudanças no código fonte
-      - "src/**"
+      - "EBAC/1 - engFrontEnd/j - React/exercicios/cinelista-nextjs/src/**"
       #Mudanças nos próprios pipelines
       - ".github/workflows/**"
   workflow_dispatch: #habilitar o botão "Run workflow" no GitHub Actions
@@ -35,7 +35,7 @@ jobs:
           #Especifica a versão do Node
           node-version: '20'
           cache: "npm"
-          cache-dependency-path: package-lock.json
+          cache-dependency-path: "./EBAC/1 - engFrontEnd/j - React/exercicios/cinelista-nextjs/package-lock.json"
           
       - name: Instalação das dependências
         run: npm install
