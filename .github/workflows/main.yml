@@ -5,6 +5,12 @@ on:
   push:
     branches:
       -  main
+    #Só dispara se os arquivos nessas pastas mudarem
+    paths:
+     #Só mudanças no código fonte
+      - "EBAC/1 - engFrontEnd/j - React/exercicios/cinelista-nextjs/src/**"
+      #Mudanças nos próprios pipelines
+      - ".github/workflows/**"
   workflow_dispatch: #habilitar o botão "Run workflow" no GitHub Actions
 
 #Conjunto de passos (steps) do pipeline que está sendo criado
@@ -13,7 +19,7 @@ jobs:
   build:
     #Imagem da máquina usada no CI
     runs-on: ubuntu-latest
-    # Define o caminho exato até a pasta do seu projeto Next.js
+            # Define o caminho exato até a pasta do projeto Next.js, pelo fato do arquivo yml não estar no mesmo diretório do projeto
     defaults:
       run:
         working-directory: "./EBAC/1 - engFrontEnd/j - React/exercicios/cinelista-nextjs"
@@ -28,6 +34,8 @@ jobs:
         with:
           #Especifica a versão do Node
           node-version: '20'
+          cache: "npm"
+          cache-dependency-path: "./EBAC/1 - engFrontEnd/j - React/exercicios/cinelista-nextjs/package-lock.json"
           
       - name: Instalação das dependências
         run: npm install
@@ -40,4 +48,40 @@ jobs:
           TMDB_API_URL: ${{ vars.TMDB_API_URL }}
           TMDB_API_KEY: ${{secrets.TMDB_API_KEY}}
           NEXT_PUBLIC_TMDB_API_IMG_URL: ${{ vars.NEXT_PUBLIC_TMDB_API_IMG_URL }}
+          
+  tests:
+        #Imagem da máquina usada no CI
+        runs-on: ubuntu-latest
+            # Define o caminho exato até a pasta do projeto Next.js, pelo fato do arquivo yml não estar no mesmo diretório do projeto
+        defaults:
+          run:
+            working-directory: "./EBAC/1 - engFrontEnd/j - React/exercicios/cinelista-nextjs"
+            
+        #Precisa que o build já tenha sido feito
+        needs: build
+        steps:
+          - name: Checkout do código
+            uses: actions/checkout@v6
 
+          #Instala o Node na máquina que será criada para rodar o código
+          - name: Instalação do Node
+            uses: actions/setup-node@v4
+            with:
+              #Especifica a versão do Node
+              node-version: '20'
+              cache: "npm"
+              cache-dependency-path: "./EBAC/1 - engFrontEnd/j - React/exercicios/cinelista-nextjs/package-lock.json"
+          
+          - name: Instalação das dependências
+            run: npm install
+        
+          #Roda o lint na máquina virtual criada
+          - name: Rodar lint
+            run: npm run lint
+           
+          - name: Verificar formatação
+            run: npm run format -- -- check
+            
+          #Roda os testes na máquina virtual criada
+          - name: Rodar testes
+            run: npm run test
