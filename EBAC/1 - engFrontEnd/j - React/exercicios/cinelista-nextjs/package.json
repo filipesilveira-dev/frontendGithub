@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "jest --watchALL"
+    "test": "jest --watchALL",
+    "format": "prettier --check ."
   },
   "dependencies": {
     "axios": "^1.13.6",
@@ -27,6 +28,7 @@
     "eslint-config-next": "16.1.6",
     "jest": "^30.3.0",
     "jest-environment-jsdom": "^30.3.0",
+    "prettier": "^3.9.5",
     "ts-node": "^10.9.2",
     "typescript": "^5"
   }
