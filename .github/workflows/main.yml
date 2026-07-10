@@ -30,8 +30,6 @@ jobs:
         with:
           #Especifica a versão do Node
           node-version: '22'
-          cache: "npm"
-          cache-dependency-path: package-lock.json
           
       - name: Instalação das dependências
         run: npm install
@@ -60,8 +58,6 @@ jobs:
             with:
               #Especifica a versão do Node
               node-version: '22'
-              cache: "npm"
-              cache-dependency-path: "./cinelista-nextjs/package-lock.json"
           
           - name: Instalação das dependências
             run: npm install
