@@ -86,7 +86,7 @@ jobs:
           - name: Rodar testes
             run: npm run test
 
-       deploy:
+  deploy:
         #Imagem da máquina usada no CI
         runs-on: ubuntu-latest
             # Define o caminho exato até a pasta do projeto Next.js, pelo fato do arquivo yml não estar no mesmo diretório do projeto
