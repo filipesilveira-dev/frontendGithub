@@ -4,12 +4,10 @@ import axios from "axios";
 // Perceba que são os dados necessários nas requisições. Para realizar um GET, por exemplo, basta utilizar tmdbApi.get("/api"), ao invés de escrever tudo toda vez.
 const tmdbApi = axios.create({
   // o "process.env" serve para utilizar a variável criada localmente sem expor no github
-  baseURL: process.env.TMDB_API_URL || "https://api.themoviedb.org/3",
+  baseURL: process.env.TMDB_API_URL,
   headers: {
-    "Content-Type": "application/json",
-    // Como você está usando o token longo v4 do TMDB, ele precisa ser enviado aqui nos headers!
-    // O prefixo "Bearer " é obrigatório para tokens JWT.
     Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
+    "Content-Type": "application/json",
   },
 });
 

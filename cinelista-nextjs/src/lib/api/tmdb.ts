@@ -21,7 +21,7 @@ export const getMovieDetails = async (
   id: number,
 ): Promise<Filme | undefined> => {
   // Retorna o objeto (Filme) direto, não havendo a necessidade de usar o type "Data". O que vem em complemento da URL depende do que você quer pegar. Selecione na barra lateral esquerda o que deseja.
-  const res = await tmdbApi.get<Filme>(`/movie/${id}day?language=pt-BR`);
+  const res = await tmdbApi.get<Filme>(`/movie/${id}?language=pt-BR`);
 
   // Retorna os dados
   return res.data;
@@ -36,7 +36,7 @@ export const getNowPlaying = async () => {
 
 // Utilizada para pegar os filmes populares (Popular) para a página "Populares"
 export const getPopularMovies = async () => {
-  const res = await tmdbApi.get<Data>("/movie/now_playing?language=pt-BR");
+  const res = await tmdbApi.get<Data>("/movie/popular?language=pt-BR");
 
   return res.data.results;
 };

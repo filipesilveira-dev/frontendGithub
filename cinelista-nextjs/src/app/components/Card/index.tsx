@@ -25,7 +25,7 @@ const Card = ({ filme }: Props) => {
     // Cada "div" aqui funcionará como um elemento de uma lista.
     <div className={styles.card}>
       {/* Link, ao contrário de <a>, faz apenas a troca necessária, sem carregar toda a página */}
-      <Link href={`filmes/${id}`}>
+      <Link href={`/filmes/${id}`}>
         {/* "img" recebe como "src" a propriedade "imagem" do objeto filme. Trata-se do endereço de onde essa imagem virá (string) */}
         <Image
           className={styles.card__poster}
