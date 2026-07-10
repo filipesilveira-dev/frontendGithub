@@ -31,7 +31,7 @@ jobs:
           #Especifica a versão do Node
           node-version: '22'
           cache: "npm"
-          cache-dependency-path: "./package-lock.json"
+          cache-dependency-path: package-lock.json
           
       - name: Instalação das dependências
         run: npm install
