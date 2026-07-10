@@ -85,3 +85,39 @@ jobs:
           #Roda os testes na máquina virtual criada
           - name: Rodar testes
             run: npm run test
+
+       deploy:
+        #Imagem da máquina usada no CI
+        runs-on: ubuntu-latest
+            # Define o caminho exato até a pasta do projeto Next.js, pelo fato do arquivo yml não estar no mesmo diretório do projeto
+        defaults:
+          run:
+            working-directory: "./EBAC/1 - engFrontEnd/j - React/exercicios/cinelista-nextjs"
+            
+        #Precisa que o build já tenha sido feito
+        needs: tests
+        steps:
+          - name: Checkout do código
+            uses: actions/checkout@v6
+
+          #Instala o Node na máquina que será criada para rodar o código
+          - name: Instalação do Node
+            uses: actions/setup-node@v4
+            with:
+              #Especifica a versão do Node
+              node-version: '20'
+              cache: "npm"
+              cache-dependency-path: "./EBAC/1 - engFrontEnd/j - React/exercicios/cinelista-nextjs/package-lock.json"
+
+          #Instalação necessária na máquina virtual da CLI da Vercel
+          - name: Instalação Vercel CLI
+            run: npm install -g vercel@latest
+        
+          #Roda o lint na máquina virtual criada
+          - name: Deploy para a Vercel
+          #Busca a variável salva em secrets and variables
+            run: vercel --prod --yes --token=${{secrets.VERCEL_TOKEN}}
+             #Especifica as variáveis que foram configuradas no GitHub Actions no caso do deploy
+            env:
+              VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+              VERCEL_PROJECT_ID: ${{secrets.VERCEL_PROJECT_ID}}
