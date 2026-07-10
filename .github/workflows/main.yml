@@ -8,7 +8,7 @@ on:
     #Só dispara se os arquivos nessas pastas mudarem
     paths:
      #Só mudanças no código fonte
-      - "EBAC/1 - engFrontEnd/j - React/exercicios/cinelista-nextjs/src/**"
+      - "/src/**"
       #Mudanças nos próprios pipelines
       - ".github/workflows/**"
   workflow_dispatch: #habilitar o botão "Run workflow" no GitHub Actions
@@ -19,10 +19,6 @@ jobs:
   build:
     #Imagem da máquina usada no CI
     runs-on: ubuntu-latest
-            # Define o caminho exato até a pasta do projeto Next.js, pelo fato do arquivo yml não estar no mesmo diretório do projeto
-    defaults:
-      run:
-        working-directory: "./EBAC/1 - engFrontEnd/j - React/exercicios/cinelista-nextjs"
     #Passos que serão realizados
     steps:
       - name: Checkout do código
@@ -35,7 +31,7 @@ jobs:
           #Especifica a versão do Node
           node-version: '22'
           cache: "npm"
-          cache-dependency-path: "./EBAC/1 - engFrontEnd/j - React/exercicios/cinelista-nextjs/package-lock.json"
+          cache-dependency-path: "./package-lock.json"
           
       - name: Instalação das dependências
         run: npm install
@@ -52,11 +48,6 @@ jobs:
   tests:
         #Imagem da máquina usada no CI
         runs-on: ubuntu-latest
-            # Define o caminho exato até a pasta do projeto Next.js, pelo fato do arquivo yml não estar no mesmo diretório do projeto
-        defaults:
-          run:
-            working-directory: "./EBAC/1 - engFrontEnd/j - React/exercicios/cinelista-nextjs"
-            
         #Precisa que o build já tenha sido feito
         needs: build
         steps:
@@ -70,7 +61,7 @@ jobs:
               #Especifica a versão do Node
               node-version: '22'
               cache: "npm"
-              cache-dependency-path: "./EBAC/1 - engFrontEnd/j - React/exercicios/cinelista-nextjs/package-lock.json"
+              cache-dependency-path: "./cinelista-nextjs/package-lock.json"
           
           - name: Instalação das dependências
             run: npm install
