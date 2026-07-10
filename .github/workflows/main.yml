@@ -33,7 +33,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           #Especifica a versão do Node
-          node-version: '20'
+          node-version: '22'
           cache: "npm"
           cache-dependency-path: "./EBAC/1 - engFrontEnd/j - React/exercicios/cinelista-nextjs/package-lock.json"
           
@@ -68,7 +68,7 @@ jobs:
             uses: actions/setup-node@v4
             with:
               #Especifica a versão do Node
-              node-version: '20'
+              node-version: '22'
               cache: "npm"
               cache-dependency-path: "./EBAC/1 - engFrontEnd/j - React/exercicios/cinelista-nextjs/package-lock.json"
           
@@ -105,7 +105,7 @@ jobs:
             uses: actions/setup-node@v4
             with:
               #Especifica a versão do Node
-              node-version: '20'
+              node-version: '22'
               cache: "npm"
               cache-dependency-path: "./EBAC/1 - engFrontEnd/j - React/exercicios/cinelista-nextjs/package-lock.json"
 
