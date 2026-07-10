@@ -33,7 +33,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           #Especifica a versão do Node
-          node-version: '20'
+          node-version: '22'
           cache: "npm"
           cache-dependency-path: "./EBAC/1 - engFrontEnd/j - React/exercicios/cinelista-nextjs/package-lock.json"
           
@@ -68,7 +68,7 @@ jobs:
             uses: actions/setup-node@v4
             with:
               #Especifica a versão do Node
-              node-version: '20'
+              node-version: '22'
               cache: "npm"
               cache-dependency-path: "./EBAC/1 - engFrontEnd/j - React/exercicios/cinelista-nextjs/package-lock.json"
           
@@ -105,7 +105,7 @@ jobs:
             uses: actions/setup-node@v4
             with:
               #Especifica a versão do Node
-              node-version: '20'
+              node-version: '22'
               cache: "npm"
               cache-dependency-path: "./EBAC/1 - engFrontEnd/j - React/exercicios/cinelista-nextjs/package-lock.json"
 
@@ -113,11 +113,8 @@ jobs:
           - name: Instalação Vercel CLI
             run: npm install -g vercel@latest
         
-          #Roda o lint na máquina virtual criada
           - name: Deploy para a Vercel
-          #Busca a variável salva em secrets and variables
-            run: vercel --prod --yes --token=${{secrets.VERCEL_TOKEN}}
-             #Especifica as variáveis que foram configuradas no GitHub Actions no caso do deploy
+            run: vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }} --env TMDB_API_URL="${{ vars.TMDB_API_URL }}" --env TMDB_API_KEY="${{ secrets.TMDB_API_KEY }}" --env NEXT_PUBLIC_TMDB_API_IMG_URL="${{ vars.NEXT_PUBLIC_TMDB_API_IMG_URL }}"
             env:
               VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-              VERCEL_PROJECT_ID: ${{secrets.VERCEL_PROJECT_ID}}
+              VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
