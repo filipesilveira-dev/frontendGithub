@@ -19,6 +19,9 @@ jobs:
   build:
     #Imagem da máquina usada no CI
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./cinelista-nextjs
     #Passos que serão realizados
     steps:
       - name: Checkout do código
@@ -30,6 +33,8 @@ jobs:
         with:
           #Especifica a versão do Node
           node-version: '22'
+          cache: "npm"
+          cache-dependency-path: "./cinelista-nextjs/package-lock.json"
           
       - name: Instalação das dependências
         run: npm install
@@ -46,6 +51,9 @@ jobs:
   tests:
         #Imagem da máquina usada no CI
         runs-on: ubuntu-latest
+        defaults:
+          run:
+            working-directory: ./cinelista-nextjs
         #Precisa que o build já tenha sido feito
         needs: build
         steps:
@@ -58,6 +66,8 @@ jobs:
             with:
               #Especifica a versão do Node
               node-version: '22'
+              cache: "npm"
+              cache-dependency-path: "./cinelista-nextjs/package-lock.json"
           
           - name: Instalação das dependências
             run: npm install
