@@ -116,7 +116,7 @@ jobs:
           #Roda o lint na máquina virtual criada
           - name: Deploy para a Vercel
           #Busca a variável salva em secrets and variables
-            run: vercel --prod --yes --token=${{secrets.VERCEL_TOKEN}}
+            run: vercel --prod --yes --token=${{secrets.VERCEL_TOKEN}} .
              #Especifica as variáveis que foram configuradas no GitHub Actions no caso do deploy
             env:
               VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
