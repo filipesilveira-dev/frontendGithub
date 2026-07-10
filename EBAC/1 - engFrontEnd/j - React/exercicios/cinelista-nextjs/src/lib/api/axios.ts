@@ -6,11 +6,10 @@ const tmdbApi = axios.create({
   // o "process.env" serve para utilizar a variável criada localmente sem expor no github
   baseURL: process.env.TMDB_API_URL || "https://api.themoviedb.org/3",
   headers: {
-    "Content-type": "application/json",
-  },
-  // Injeta automaticamente a chave v3 curta como query param em todas as rotas (?api_key=...)
-  params: {
-    api_key: process.env.TMDB_API_KEY || "",
+    "Content-Type": "application/json",
+    // Como você está usando o token longo v4 do TMDB, ele precisa ser enviado aqui nos headers!
+    // O prefixo "Bearer " é obrigatório para tokens JWT.
+    Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
   },
 });
 
