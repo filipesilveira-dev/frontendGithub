@@ -108,7 +108,7 @@ jobs:
               run: npm install -g vercel@latest
            
             - name: Deploy para Vercel
-              run: vercel --prod --yes --token={{ secrets.VERCEL_TOKEN }}
+              run: vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
               #Especifica as variáveis que foram configuradas no GitHub Actions
               env:
                 VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
