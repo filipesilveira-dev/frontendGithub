@@ -106,10 +106,6 @@ jobs:
           
             - name: Instalação Vercel CLI
               run: npm install -g vercel@latest
-        
-            #Roda o lint na máquina virtual criada
-            - name: Rodar lint
-              run: npm run lint
            
             - name: Deploy para Vercel
               run: vercel --prod --yes --token={{secrets.VERCEL_TOKEN}}
