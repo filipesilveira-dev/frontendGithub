@@ -82,3 +82,34 @@ jobs:
           #Roda os testes na máquina virtual criada
           - name: Rodar testes
             run: npm run test
+
+  deploy:
+          #Imagem da máquina usada no CI
+          runs-on: ubuntu-latest
+          defaults:
+            run:
+              working-directory: ./cinelista-nextjs
+          #Precisa que o tests já tenha sido feito
+          needs: tests
+          steps:
+            - name: Checkout do código
+              uses: actions/checkout@v6
+
+            #Instala o Node na máquina que será criada para rodar o código
+            - name: Instalação do Node
+              uses: actions/setup-node@v4
+              with:
+                #Especifica a versão do Node
+                node-version: '22'
+                cache: "npm"
+                cache-dependency-path: "./cinelista-nextjs/package-lock.json"
+          
+            - name: Instalação Vercel CLI
+              run: npm install -g vercel@latest
+           
+            - name: Deploy para Vercel
+              run: vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
+              #Especifica as variáveis que foram configuradas no GitHub Actions
+              env:
+                VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+                VERCEL_PROJECT_ID: ${{secrets.VERCEL_PROJECT_ID}}
