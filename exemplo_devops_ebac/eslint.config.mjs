@@ -1,18 +1,22 @@
-import { defineConfig, globalIgnores } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTs from "eslint-config-next/typescript";
+import jest from 'eslint-plugin-jest';
 
-const eslintConfig = defineConfig([
-  ...nextVitals,
-  ...nextTs,
-  // Override default ignores of eslint-config-next.
-  globalIgnores([
-    // Default ignores of eslint-config-next:
-    ".next/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
-  ]),
-]);
-
-export default eslintConfig;
+export default [
+  // ... outras configurações que você já tem
+  
+  {
+    // Aplica as regras de teste apenas em arquivos de teste
+    files: ['**/*.test.js', '**/*.test.ts', '**/*.spec.js', '**/*.spec.ts'],
+    plugins: {
+      jest,
+    },
+    rules: {
+      ...jest.configs.recommended.rules,
+      'jest/prefer-expect-assertions': 'off', // Opcional: ajusta regras conforme seu gosto
+    },
+    languageOptions: {
+      globals: {
+        ...jest.environments.globals.globals,
+      },
+    },
+  },
+];
