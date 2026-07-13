@@ -16,8 +16,8 @@ export default function Message({ textColorClass }: MessageProps) {
           estilização de elementos HTML
         </li>
         <li>
-          - <strong>Teste do hook:</strong> teste realizado para verificar o funcionamento do custom
-          hook
+          - <strong>Teste do hook:</strong> teste realizado para verificar o
+          funcionamento do custom hook
         </li>
         <li></li>
       </ul>

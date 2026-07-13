@@ -7,9 +7,8 @@ import { useStyleSwitcher, colors } from "./app/hook/useStyleSwitcher"; // Impor
 
 // Agrupa os testes (todos se referem ao hook useStyleSwitcher)
 describe("useStyleSwitcher", () => {
-    // Descreve o comportamento esperado
+  // Descreve o comportamento esperado
   it("deve alternar para uma cor diferente da atual", () => {
-
     // 1. Arrange: Mock do Math.random: o "spyOn" permite controlar o resultado randômico
     const randomSpy = jest
       .spyOn(Math, "random")

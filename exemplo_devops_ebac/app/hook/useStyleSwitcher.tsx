@@ -6,14 +6,14 @@ type Color = {
 };
 
 export const colors = [
-    { text: "text-black", bg: "bg-white" },
-    { text: "text-red-500", bg: "bg-black" },
-    { text: "text-green-500", bg: "bg-yellow-200" },
-    { text: "text-blue-500", bg: "bg-green-200" },
-  ];
+  { text: "text-black", bg: "bg-white" },
+  { text: "text-red-500", bg: "bg-black" },
+  { text: "text-green-500", bg: "bg-yellow-200" },
+  { text: "text-blue-500", bg: "bg-green-200" },
+];
 
-export const useStyleSwitcher = (initialColors: Color[])=>{
-    const [currentStyle, setCurrentStyle] = useState<Color>(initialColors[0])
+export const useStyleSwitcher = (initialColors: Color[]) => {
+  const [currentStyle, setCurrentStyle] = useState<Color>(initialColors[0]);
 
   const changeStyle = () => {
     let newIndex;
@@ -27,5 +27,5 @@ export const useStyleSwitcher = (initialColors: Color[])=>{
     // Atualiza o estado com a cor escolhida
     setCurrentStyle(colors[newIndex]);
   };
-    return {currentStyle, changeStyle}
-}
+  return { currentStyle, changeStyle };
+};

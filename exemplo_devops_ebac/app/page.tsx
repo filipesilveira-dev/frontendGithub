@@ -4,10 +4,8 @@ import Button from "./components/Button";
 import Message from "./components/Message";
 import { colors, useStyleSwitcher } from "./hook/useStyleSwitcher";
 
-
 export default function Home() {
-      const {currentStyle, changeStyle}=useStyleSwitcher(colors)
-
+  const { currentStyle, changeStyle } = useStyleSwitcher(colors);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-zinc-200 font-sans ">

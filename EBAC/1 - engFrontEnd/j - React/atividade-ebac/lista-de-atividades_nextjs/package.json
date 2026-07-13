@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "test": "jest --watchALL",
-    "test:cov": "jest --coverage"
+    "test:cov": "jest --coverage",
+    "prettier"
   },
   "dependencies": {
     "next": "16.2.4",
