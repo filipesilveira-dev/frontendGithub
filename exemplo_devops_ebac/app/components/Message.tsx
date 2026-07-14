@@ -12,7 +12,7 @@ export default function Message({ textColorClass }: MessageProps) {
       </p>
       <ul className={`flex text-center ${textColorClass}`}>
         <li>
-          - <strong>Custom Hook:</strong> contém uma função que altera
+          - <strong>Custom Hook:</stron> contém uma função que altera
           estilização de elementos HTML
         </li>
         <li>
