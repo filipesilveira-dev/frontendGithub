@@ -19,7 +19,10 @@ export default function Message({ textColorClass }: MessageProps) {
           - <strong>Teste do hook:</strong> teste realizado para verificar o
           funcionamento do custom hook
         </li>
-        <li>- <strong>Pipeline CI/CD</strong> com validação de código, build da aplicação e deploy automatizado</li>
+        <li>
+          - <strong>Pipeline CI/CD</strong> com validação de código, build da
+          aplicação e deploy automatizado
+        </li>
       </ul>
     </div>
   );
