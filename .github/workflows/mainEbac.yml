@@ -8,7 +8,7 @@ on:
     #Só dispara se os arquivos nessas pastas mudarem
     paths:
      #Só mudanças no código fonte
-      - "/src/**"
+      - "exemplo_devops_ebac/app/**"
       #Mudanças nos próprios pipelines
       - ".github/workflows/**"
   workflow_dispatch: #habilitar o botão "Run workflow" no GitHub Actions
