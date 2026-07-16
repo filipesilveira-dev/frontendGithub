@@ -1,11 +1,14 @@
 #Nome do workflow, aparece na aba "Actions"
 name: Atividade EBAC - Pipeline CI/CD
-#Definir quando o pipeline será disparado. Aqui especifica que, quando ocorrer um "push" na main branch, o pipeline será disparado.
+
 on: 
-  #Dispara quando houver um push na branch main, independente do arquivo do projeto
   push:
     branches:
       -  main
+     # Dispara este pipeline CI/CD apenas quando um push na branch main contém alterações em pelo menos um dos caminhos abaixo.
+    paths:
+      - "exemplo_devops_ebac/**"
+      - ".github/workflows/**"
     
   workflow_dispatch: #habilitar o botão "Run workflow" no GitHub Actions
 
