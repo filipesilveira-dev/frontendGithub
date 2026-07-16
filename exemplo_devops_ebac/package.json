@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "test": "jest",
-    "format": "prettier --check ."
+    "format": "prettier --check .",
+    "fix": "prettier --write ."
   },
   "dependencies": {
     "next": "16.2.10",
