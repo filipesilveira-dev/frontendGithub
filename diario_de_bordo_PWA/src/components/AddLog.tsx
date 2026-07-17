@@ -21,7 +21,7 @@ export function AddLog({ onAddLog }: AddLogProps) {
       <h4>Adicione um título</h4>
       <input value={title} onChange={(e) => setTitle(e.target.value)} type="text" name="" id="" />
       <h4>Adicione uma descrição</h4>
-      <textarea value={description} onChange={(e) => setDescription(e.target.value)} name="" id=""></textarea>
+      <textarea value={description} onChange={(e) => setDescription(e.target.value)} name="" id=""></textarea> <br />
       <button type="submit">Salvar</button>
     </form>
   );

@@ -10,8 +10,10 @@ export function LogItem({ logs, onDeleteLog }: LogItemProps) {
     <div>
       {logs.map((log) => (
         <li key={log.id}>
-          {log.title}
-          <button onClick={() => onDeleteLog(log.id)}>X</button>
+          Título: {log.title} <br />
+          Descrição: {log.description} <br />
+          Data: {log.data} <br />
+          <button onClick={() => onDeleteLog(log.id)}>Remover X</button>
         </li>
       ))}
     </div>
