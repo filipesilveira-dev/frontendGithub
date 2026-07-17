@@ -19,9 +19,19 @@ export function AddLog({ onAddLog }: AddLogProps) {
   return (
     <form onSubmit={handleSubmit}>
       <h4>Adicione um título</h4>
-      <input value={title} onChange={(e) => setTitle(e.target.value)} type="text" name="" id="" />
+      <input
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        type="text"
+      />
       <h4>Adicione uma descrição</h4>
-      <textarea value={description} onChange={(e) => setDescription(e.target.value)} name="" id=""></textarea> <br />
+      <textarea
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        rows={5}
+        cols={50}
+      ></textarea>
+      <br />
       <button type="submit">Salvar</button>
     </form>
   );
