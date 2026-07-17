@@ -19,11 +19,16 @@ function App() {
     setLogs(prev=>[...prev,newLog])
   }
     
+  const deleteLog = (id: number)=>{
+    const filteredLogs = logs.filter(log=> log.id !== id)
+    setLogs(filteredLogs)
+  }
+
   return (
     <>
       <h1>Diário de Bordo</h1>
       <AddLog onAddLog={addLog}/>
-      <LogList logs={logs}/>
+      <LogList logs={logs} onDeleteLog={deleteLog}/>
     </>
   );
 }

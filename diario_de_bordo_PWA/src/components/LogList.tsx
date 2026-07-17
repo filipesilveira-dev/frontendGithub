@@ -1,15 +1,17 @@
 import type { Log } from "../App"
+import { LogItem } from "./LogItem"
 
 interface LogListProps{
     logs: Log[]
+    onDeleteLog: (id:number)=>void
 }
 
-export function LogList({logs}: LogListProps){
+export function LogList({logs, onDeleteLog}: LogListProps){
     return(
         <div>
             <h3>Lista de registros</h3>
             <ul>
-                {logs.map(log => <li key={log.id}>{log.title}</li>)}
+                <LogItem logs={logs} onDeleteLog={onDeleteLog}/>
             </ul>
         </div>
     )
