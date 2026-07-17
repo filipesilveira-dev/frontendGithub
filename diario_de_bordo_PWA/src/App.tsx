@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./App.css";
+import "./diario.css";
 import { AddLog } from "./components/AddLog";
 import { LogList } from "./components/LogList";
 
@@ -21,10 +21,12 @@ function App() {
       return [];
     }
   });
+
   // O efeito colateral do useEffect atribui um novo valor (se adicionar, o array adicionado do novo registro. Se remover, o array sem o registro removido) à chave "logbook"
   useEffect(() => {
     localStorage.setItem("logbook", JSON.stringify(logs));
   }, [logs]);
+
   // Função que adiciona um novo registro
   const addLog = (title: string, description: string) => {
     const data = new Date().toLocaleDateString("pt-BR");
@@ -47,3 +49,5 @@ function App() {
 }
 
 export default App;
+
+
