@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {toFormatText} from "../util/toFormatText.ts";
+import { toFormatText } from "../util/toFormatText.ts";
 
 interface AddLogProps {
   onAddLog: (title: string, description: string) => void;
@@ -41,8 +41,9 @@ export function AddLog({ onAddLog }: AddLogProps) {
           required
         ></textarea>
       </div>
-      <button type="submit" className="btn-submit">Salvar Registro</button>
+      <button type="submit" className="btn-submit">
+        Salvar Registro
+      </button>
     </form>
   );
 }
-

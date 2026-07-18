@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./diario.css";
+import "./styles.css";
 import { AddLog } from "./components/AddLog";
 import { LogList } from "./components/LogList";
 
@@ -49,5 +49,3 @@ function App() {
 }
 
 export default App;
-
-

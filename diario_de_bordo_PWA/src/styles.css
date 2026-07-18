@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
 
 :root {
   --bg: #0b0f17;
@@ -7,23 +7,24 @@
   --text: #94a3b8;
   --text-light: #64748b;
   --text-h: #f8fafc;
-  
+
   --accent: #34d399; /* Verde mar/Seafoam */
   --accent-glow: rgba(52, 211, 153, 0.15);
   --accent-hover: #059669;
-  
+
   --primary: #38bdf8; /* Azul celeste náutico */
   --primary-glow: rgba(56, 189, 248, 0.2);
-  
+
   --danger: #f87171; /* Vermelho aviso */
   --danger-bg: rgba(248, 113, 113, 0.1);
   --danger-hover: #dc2626;
 
-  --sans: 'Outfit', system-ui, -apple-system, sans-serif;
-  --mono: 'JetBrains Mono', ui-monospace, monospace;
-  
+  --sans: "Outfit", system-ui, -apple-system, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+
   --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.2);
-  --shadow-hover: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 15px rgba(56, 189, 248, 0.1);
+  --shadow-hover:
+    0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 15px rgba(56, 189, 248, 0.1);
 }
 
 /* Reset Geral e Fundo */
@@ -69,7 +70,7 @@ h1 {
 }
 
 h1::before {
-  content: '⚓';
+  content: "⚓";
   font-size: 24px;
   -webkit-text-fill-color: initial;
 }
@@ -82,12 +83,16 @@ h1::before {
   padding: 24px;
   box-shadow: var(--shadow);
   margin-bottom: 40px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .form-container:focus-within {
   border-color: var(--primary-glow);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--primary-glow);
+  box-shadow:
+    0 10px 30px -10px rgba(0, 0, 0, 0.5),
+    0 0 0 1px var(--primary-glow);
 }
 
 .form-group {
@@ -325,4 +330,3 @@ h1::before {
     align-self: flex-start;
   }
 }
-

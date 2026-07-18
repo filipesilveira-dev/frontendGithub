@@ -23,4 +23,3 @@ export function LogList({ logs, onDeleteLog }: LogListProps) {
     </div>
   );
 }
-

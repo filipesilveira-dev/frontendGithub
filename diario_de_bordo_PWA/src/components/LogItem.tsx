@@ -25,4 +25,3 @@ export function LogItem({ logs, onDeleteLog }: LogItemProps) {
     </>
   );
 }
-
