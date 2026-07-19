@@ -1,5 +1,5 @@
 // recebe o nome do cache onde conterão as informações salvas
-const CACHE_NAME = "flashecards-cache-v1";
+const CACHE_NAME = "diario-cache-v1";
 // recebe os endereços dos arquivos que ficarão salvos no cache
 const URLS_CACHE = [
   "/index.html",

@@ -62,6 +62,7 @@ h1 {
   letter-spacing: -0.5px !important;
   background: linear-gradient(135deg, var(--text-h) 30%, var(--primary) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   display: flex;
   justify-content: center;
@@ -73,6 +74,10 @@ h1::before {
   content: "⚓";
   font-size: 24px;
   -webkit-text-fill-color: initial;
+}
+
+.container-title-installButton {
+  display: flex;
 }
 
 /* Formulário de Adição */
@@ -136,8 +141,9 @@ h1::before {
   min-height: 100px;
 }
 
-/* Botão Principal */
-.btn-submit {
+/* Botões */
+.btn-submit,
+.btn-install {
   width: 100%;
   background: linear-gradient(135deg, var(--accent) 0%, #10b981 100%);
   border: none;
@@ -156,14 +162,20 @@ h1::before {
   gap: 8px;
 }
 
-.btn-submit:hover {
+.btn-submit:hover,
+.btn-install:hover {
   transform: translateY(-1px);
   box-shadow: 0 6px 20px var(--accent-glow);
   filter: brightness(1.1);
 }
 
-.btn-submit:active {
+.btn-submit:active,
+.btn-install:active {
   transform: translateY(1px);
+}
+
+.btn-install{
+  display: none;
 }
 
 /* Listagem de Logs */

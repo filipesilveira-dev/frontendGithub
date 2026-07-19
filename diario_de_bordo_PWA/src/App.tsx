@@ -41,7 +41,10 @@ function App() {
 
   return (
     <>
-      <h1>Diário de Bordo</h1>
+      <div className="container-title-installButton">
+        <h1>Diário de Bordo</h1>
+        <button className="btn-install">Instalar</button>
+      </div>
       <AddLog onAddLog={addLog} />
       <LogList logs={logs} onDeleteLog={deleteLog} />
     </>
