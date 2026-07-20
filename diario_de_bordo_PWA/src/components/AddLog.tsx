@@ -22,6 +22,7 @@ export function AddLog({ onAddLog }: AddLogProps) {
       <div className="form-group">
         <label className="form-label">Adicione um título</label>
         <input
+          name="title"
           value={title}
           onChange={(e) => setTitle(toFormatText(e.target.value))}
           type="text"
@@ -33,6 +34,7 @@ export function AddLog({ onAddLog }: AddLogProps) {
       <div className="form-group">
         <label className="form-label">Adicione uma descrição</label>
         <textarea
+          name="description"
           value={description}
           onChange={(e) => setDescription(toFormatText(e.target.value))}
           rows={5}

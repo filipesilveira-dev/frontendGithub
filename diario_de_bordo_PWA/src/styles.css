@@ -174,7 +174,8 @@ h1::before {
   transform: translateY(1px);
 }
 
-.btn-install{
+.btn-install {
+  background-color: #ffffff;
   display: none;
 }
 
