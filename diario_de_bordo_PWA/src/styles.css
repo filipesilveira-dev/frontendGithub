@@ -78,6 +78,12 @@ h1::before {
 
 .container-title-installButton {
   display: flex;
+  justify-content: space-between;
+}
+
+.container-title {
+  display: flex;
+  justify-content: center;
 }
 
 /* Formulário de Adição */
@@ -142,8 +148,28 @@ h1::before {
 }
 
 /* Botões */
-.btn-submit,
 .btn-install {
+  background-color: #ffffff;
+  align-self: center;
+  width: 30%;
+  background: linear-gradient(135deg, var(--accent) 0%, #10b981 100%);
+  border: none;
+  border-radius: 8px;
+  color: #061c12;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px var(--accent-glow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-submit {
   width: 100%;
   background: linear-gradient(135deg, var(--accent) 0%, #10b981 100%);
   border: none;
@@ -172,11 +198,6 @@ h1::before {
 .btn-submit:active,
 .btn-install:active {
   transform: translateY(1px);
-}
-
-.btn-install {
-  background-color: #ffffff;
-  display: none;
 }
 
 /* Listagem de Logs */

@@ -1,7 +1,7 @@
 //sw: intermediário entre a aplicação a rede e o cache
 
 // recebe o nome do cache onde conterão as informações salvas
-const CACHE_NAME = "diario-cache-v3";
+const CACHE_NAME = "diario-cache-v5";
 // recebe os endereços dos arquivos que ficarão salvos no cache
 const URLS_CACHE = [
   "/index.html",

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./styles.css";
 import { AddLog } from "./components/AddLog";
 import { LogList } from "./components/LogList";
+import { useInstallButton } from "./store/useInstallButton";
 
 export interface Log {
   id: number;
@@ -11,6 +12,13 @@ export interface Log {
 }
 
 function App() {
+  // Recurso do Zustand para renderizar ou não o botão de instalação
+  const showInstallButton = useInstallButton(
+    (state) => state.showInstallButton,
+  );
+  const install = useInstallButton((state) => state.install);
+  console.log("Estado do showInstallButton:", showInstallButton);
+
   // O valor inicial do estado "logs" será o que estiver salvo no localStorage na chave "logbook". Caso não haja nada, será retornado um array vazio
   const [logs, setLogs] = useState<Log[]>(() => {
     const savedLogbook = localStorage.getItem("logbook");
@@ -41,10 +49,20 @@ function App() {
 
   return (
     <>
-      <div className="container-title-installButton">
-        <h1>Diário de Bordo</h1>
-        <button className="btn-install">Instalar</button>
-      </div>
+      {showInstallButton && (
+        <div className="container-title-installButton">
+          <h1>Diário de Bordo</h1>
+          {/* O aparecimento do botão customizado de instalar o PWA agora está ligado a uma condição para a renderização e não à manipulação direta de propriedades de estilização de um elemento HTML */}
+          <button className="btn-install" onClick={install}>
+            Instalar
+          </button>
+        </div>
+      )}
+      {!showInstallButton && (
+        <div className="container-title">
+          <h1>Diário de Bordo</h1>
+        </div>
+      )}
       <AddLog onAddLog={addLog} />
       <LogList logs={logs} onDeleteLog={deleteLog} />
     </>
