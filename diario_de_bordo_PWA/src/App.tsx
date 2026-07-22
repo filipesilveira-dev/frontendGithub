@@ -17,8 +17,7 @@ function App() {
     (state) => state.showInstallButton,
   );
   const install = useInstallButton((state) => state.install);
-  console.log("Estado do showInstallButton:", showInstallButton);
-
+  
   // O valor inicial do estado "logs" será o que estiver salvo no localStorage na chave "logbook". Caso não haja nada, será retornado um array vazio
   const [logs, setLogs] = useState<Log[]>(() => {
     const savedLogbook = localStorage.getItem("logbook");
