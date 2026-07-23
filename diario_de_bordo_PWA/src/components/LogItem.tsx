@@ -11,7 +11,7 @@ export function LogItem({ logs, onDeleteLog }: LogItemProps) {
       {logs.map((log) => (
         <li key={log.id} className="log-item-card">
           <div className="log-item-header">
-            <h4 className="log-item-title">{log.title}</h4>
+            <h3 className="log-item-title">{log.title}</h3>
             <span className="log-item-date">{log.data}</span>
           </div>
           <div className="log-item-description">{log.description}</div>

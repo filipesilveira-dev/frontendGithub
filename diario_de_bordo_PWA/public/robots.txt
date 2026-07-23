@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Define o manifesto do PWA como acessível
+Allow: /manifest.webmanifest

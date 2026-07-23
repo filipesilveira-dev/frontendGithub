@@ -9,10 +9,10 @@ interface LogListProps {
 export function LogList({ logs, onDeleteLog }: LogListProps) {
   return (
     <div className="list-container">
-      <h3 className="list-title">
+      <h2 className="list-title">
         Lista de registros
         <span className="list-counter">{logs.length}</span>
-      </h3>
+      </h2>
       {logs.length === 0 ? (
         <div className="empty-message">Nenhum registro no diário de bordo.</div>
       ) : (

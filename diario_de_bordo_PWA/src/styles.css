@@ -3,18 +3,18 @@
   --bg: #0b0f17;
   --panel-bg: #151f32;
   --panel-border: rgba(56, 189, 248, 0.15);
-  --text: #94a3b8;
-  --text-light: #64748b;
+  --text: #e2e8f0;
+  --text-light: #94a3b8;
   --text-h: #f8fafc;
 
-  --accent: #34d399; /* Verde mar/Seafoam */
+  --accent: #34d399; 
   --accent-glow: rgba(52, 211, 153, 0.15);
   --accent-hover: #059669;
 
-  --primary: #38bdf8; /* Azul celeste náutico */
+  --primary: #38bdf8; 
   --primary-glow: rgba(56, 189, 248, 0.2);
 
-  --danger: #f87171; /* Vermelho aviso */
+  --danger: #f87171; 
   --danger-bg: rgba(248, 113, 113, 0.1);
   --danger-hover: #dc2626;
 

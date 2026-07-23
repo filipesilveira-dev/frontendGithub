@@ -47,7 +47,7 @@ function App() {
   };
 
   return (
-    <>
+    <main>
       {showInstallButton && (
         <div className="container-title-installButton">
           <h1>Diário de Bordo</h1>
@@ -64,7 +64,7 @@ function App() {
       )}
       <AddLog onAddLog={addLog} />
       <LogList logs={logs} onDeleteLog={deleteLog} />
-    </>
+    </main>
   );
 }
 
