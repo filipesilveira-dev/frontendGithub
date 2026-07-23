@@ -13,7 +13,7 @@ export default defineConfig({
       // Atualiza o SW automaticamente
       registerType: "autoUpdate",
       // Arquivos estáticos da pasta public
-      includeAssets: ["favicon.png", "screenshots/*.png"],
+      includeAssets: ["favicon.png", "favicon.svg", "screenshots/*.png"],
       // CONFIGURAÇÃO DO WORKBOX PARA ARMAZENAR FONTES NO CACHE
       workbox: {
         // Padrão de arquivos que devem ir para o precache do Service Worker

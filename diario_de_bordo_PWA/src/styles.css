@@ -7,16 +7,14 @@
   --text-light: #94a3b8;
   --text-h: #f8fafc;
 
-  --accent: #34d399; 
+  --accent: #34d399; /* Verde mar/Seafoam */
   --accent-glow: rgba(52, 211, 153, 0.15);
-  --accent-hover: #059669;
 
-  --primary: #38bdf8; 
+  --primary: #38bdf8; /* Azul celeste náutico */
   --primary-glow: rgba(56, 189, 248, 0.2);
 
-  --danger: #f87171; 
+  --danger: #f87171; /* Vermelho aviso */
   --danger-bg: rgba(248, 113, 113, 0.1);
-  --danger-hover: #dc2626;
 
   --sans: "Outfit", system-ui, -apple-system, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, monospace;
