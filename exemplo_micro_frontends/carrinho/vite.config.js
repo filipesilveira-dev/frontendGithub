@@ -34,6 +34,8 @@ export default defineConfig({
     port: 3002,
     // se a 3001 estiver ocupada, ele falha em vez de mudar para 3002
     strictPort: true,
+    // Libera o acesso do Container para ler os módulos JS
+    cors: true,
   },
   // Configuração de build necessária para habilitar o Top-Level Await do Module Federation. O Vite utiliza o ESbuild originalmente
   build: {
