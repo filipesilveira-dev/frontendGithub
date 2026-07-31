@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Checkout.css";
+import checkout from "../assets/checkout.webp"
 
 export default function Checkout() {
   const [items, setItems] = useState([]);
@@ -30,7 +31,8 @@ export default function Checkout() {
         {items.length === 0 ? (
           <div className="checkout-empty-state">
             <p className="checkout-empty-message">
-              Seu carrinho está com fome!<br />Adicione algum prato ao lado.
+              <img src={checkout} alt="imagem de prato vazio" />
+              <br/>Adicione algum prato
             </p>
           </div>
         ) : (
