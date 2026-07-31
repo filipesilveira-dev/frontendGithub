@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./Checkout.css";
-import checkout from "../assets/checkout.webp"
 
 export default function Checkout() {
   const [items, setItems] = useState([]);
@@ -9,7 +8,7 @@ export default function Checkout() {
   useEffect(() => {
     // função de callback: ela é cahamada apenas quando ouve o evento "adicionarCarrinho". Necessária sua declaração para dar a exata referência no momento de remover o evento
     const handleAdd = (event) => {
-      // Dica: Sempre use o estado anterior (prev) em eventos globais 
+      // Dica: Sempre use o estado anterior (prev) em eventos globais
       // para não depender do escopo da renderização inicial
       setItems((prev) => [...prev, event.detail]);
     };
@@ -17,12 +16,12 @@ export default function Checkout() {
     // adição do ouvinte no objeto window
     window.addEventListener("addToCheckout", handleAdd);
 
-    // função de retorno remove o ouvinte quando o componente for desmontado ou re-renderizado. Isso mata o vazamento de memória. 
+    // função de retorno remove o ouvinte quando o componente for desmontado ou re-renderizado. Isso mata o vazamento de memória.
     return () => {
       window.removeEventListener("addToCheckout", handleAdd);
     };
     // dependência com array vazia para o useEffect rodar apenas na montagem
-  },[]);
+  }, []);
 
   return (
     <div className="checkout-container">
@@ -31,8 +30,7 @@ export default function Checkout() {
         {items.length === 0 ? (
           <div className="checkout-empty-state">
             <p className="checkout-empty-message">
-              <img src={checkout} alt="imagem de prato vazio" />
-              <br/>Adicione algum prato
+              Sua lista de pedidos está vazia
             </p>
           </div>
         ) : (
@@ -45,11 +43,9 @@ export default function Checkout() {
                 </li>
               ))}
             </ul>
-            
+
             <div className="checkout-footer">
-              <button className="checkout-btn-primary">
-                Finalizar Pedido
-              </button>
+              <button className="checkout-btn-primary">Finalizar Pedido</button>
             </div>
           </div>
         )}
@@ -60,9 +56,7 @@ export default function Checkout() {
           <span className="mobile-bar-qty">{items.length} itens</span>
           <span className="mobile-bar-total">A calcular</span>
         </div>
-        <button className="mobile-bar-btn">
-          Ver Sacola
-        </button>
+        <button className="mobile-bar-btn">Ver Sacola</button>
       </div>
     </div>
   );
