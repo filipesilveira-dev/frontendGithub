@@ -1,4 +1,5 @@
 import Card from "./Card";
+import "./Menu.css";
 
 export default function Menu() {
   const menuItems = [
@@ -165,9 +166,9 @@ export default function Menu() {
   ];
 
   return (
-    <>
-      <h2>Menu</h2>
+    <div className="menu-container">
+      <h2 className="menu-heading">Cardápio</h2>
       <Card menuItems={menuItems} />
-    </>
+    </div>
   );
 }
