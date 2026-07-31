@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./Checkout.css";
 
 export default function Checkout() {
   const [items, setItems] = useState([]);
@@ -23,17 +24,44 @@ export default function Checkout() {
   },[]);
 
   return (
-    <>
-      <h2>Pedido</h2>
-      {items.length === 0 ? (
-        <p>Nenhum item no pedido</p>
-      ) : (
-        <ul>
-          {items.map((item, id) => (
-            <li key={id}>{item}</li>
-          ))}
-        </ul>
-      )}
-    </>
+    <div className="checkout-container">
+      <div className="checkout-desktop-view">
+        <h2 className="checkout-heading">Seu Pedido</h2>
+        {items.length === 0 ? (
+          <div className="checkout-empty-state">
+            <p className="checkout-empty-message">
+              Seu carrinho está com fome!<br />Adicione algum prato ao lado.
+            </p>
+          </div>
+        ) : (
+          <div className="checkout-content">
+            <ul className="checkout-list">
+              {items.map((item, index) => (
+                <li key={index} className="checkout-item">
+                  <span className="checkout-item-name">{item}</span>
+                  <span className="checkout-item-qty">1x</span>
+                </li>
+              ))}
+            </ul>
+            
+            <div className="checkout-footer">
+              <button className="checkout-btn-primary">
+                Finalizar Pedido
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="checkout-mobile-bar">
+        <div className="mobile-bar-info">
+          <span className="mobile-bar-qty">{items.length} itens</span>
+          <span className="mobile-bar-total">A calcular</span>
+        </div>
+        <button className="mobile-bar-btn">
+          Ver Sacola
+        </button>
+      </div>
+    </div>
   );
 }
