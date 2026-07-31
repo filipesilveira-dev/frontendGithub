@@ -4,7 +4,7 @@ const Card = ({ menuItems }) => {
       {menuItems.map((item) => (
         <li key={item.id} className="menu-card">
           <div className="card-body">
-            <img src="https://placehold.co/300x200" alt="" className="card-image" />
+            <img src="https://placehold.co/300x200" alt="imagem ilustrativa do prato" className="card-image" />
             <h3 className="card-title">{item.name}</h3>
             <p className="card-description">{item.description}</p>
             <p className="card-price">{item.price}</p>
