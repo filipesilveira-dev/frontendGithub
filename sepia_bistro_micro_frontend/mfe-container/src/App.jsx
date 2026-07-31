@@ -7,16 +7,31 @@ const Checkout = React.lazy(() => import("checkout/Checkout"));
 
 function App() {
   return (
-    <>
-      <h1>Micro Frontends - Container</h1>
-      {/* O componente "<Suspense>" gerencia o estado de carregamento */}
-      <Suspense fallback={<div>Carregando o Menu</div>}>
-        <Menu />
-      </Suspense>
-      <Suspense fallback={<div>Carregando o Pedido</div>}>
-        <Checkout />
-      </Suspense>
-    </>
+    <div className="app-layout">
+      <header className="app-header">
+        <div className="header-content">
+          <span className="logo-sepia">Sépia <span className="logo-bistro">Bistrô</span></span>
+          <nav className="nav-links">
+            <a href="#menu" className="active">Cardápio</a>
+            <a href="#about">Nosso Bistrô</a>
+          </nav>
+        </div>
+      </header>
+
+      <main className="main-content">
+        <section id="menu" className="menu-column">
+          <Suspense fallback={<div className="loading-state">Carregando o Cardápio...</div>}>
+            <Menu />
+          </Suspense>
+        </section>
+
+        <aside className="checkout-column">
+          <Suspense fallback={<div className="loading-state">Carregando o Pedido...</div>}>
+            <Checkout />
+          </Suspense>
+        </aside>
+      </main>
+    </div>
   );
 }
 
