@@ -8,9 +8,20 @@ export default function Checkout() {
   useEffect(() => {
     // função de callback: ela é cahamada apenas quando ouve o evento "adicionarCarrinho". Necessária sua declaração para dar a exata referência no momento de remover o evento
     const handleAdd = (event) => {
-      // Dica: Sempre use o estado anterior (prev) em eventos globais
+      // a variável recebe o id, nome e preço do item adicionado
+      const newItem = event.detail;
       // para não depender do escopo da renderização inicial
-      setItems((prev) => [...prev, event.detail]);
+      setItems((prevItems) => {
+        const existingItem = prevItems.find((item) => item.id === newItem.id);
+        if (existingItem) {
+          return prevItems.map((item) =>
+            item.id === newItem.id
+              ? { ...item, quantity: item.quantity + 1 }
+              : item,
+          );
+        }
+        return [...prevItems, { ...newItem, quantity: 1 }];
+      });
     };
 
     // adição do ouvinte no objeto window
@@ -38,8 +49,8 @@ export default function Checkout() {
             <ul className="checkout-list">
               {items.map((item, index) => (
                 <li key={index} className="checkout-item">
-                  <span className="checkout-item-name">{item}</span>
-                  <span className="checkout-item-qty">1x</span>
+                  <span className="checkout-item-name">{item.name}</span>
+                  <span className="checkout-item-qty">{item.quantity}x</span>
                 </li>
               ))}
             </ul>
