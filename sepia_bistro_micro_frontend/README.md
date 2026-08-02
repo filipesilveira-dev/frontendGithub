@@ -30,7 +30,7 @@ O projeto é composto pelos seguintes micro frontends:
 Clone o repositório do projeto:
 
 ```bash
-git clone <https://github.com/filipesilveira-dev/frontendGithub/tree/main/exemplo_micro_frontends>
+git clone <https://github.com/filipesilveira-dev/frontendGithub/tree/main/sepia_bistro_micro_frontend>
 ```
 
 Acesse a pasta do Container:
