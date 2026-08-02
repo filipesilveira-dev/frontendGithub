@@ -106,22 +106,6 @@ http://localhost:3000
 
 ---
 
-# 🏗️ Gerando a versão de produção
-
-Para gerar o build do Container:
-
-```bash
-npm run build
-```
-
-Para visualizar o build localmente:
-
-```bash
-npm run preview
-```
-
----
-
 # 🧪 Qualidade de Código
 
 Executar a análise estática do código:
