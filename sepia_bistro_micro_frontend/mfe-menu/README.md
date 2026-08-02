@@ -213,20 +213,6 @@ Cada micro frontend permanece responsável exclusivamente pelo seu domínio de n
 
 ---
 
-# 📁 Estrutura do projeto
-
-```
-mfe-container/
-│
-├── src/
-├── public/
-├── vite.config.js
-├── package.json
-└── README.md
-```
-
----
-
 # 📌 Objetivo do projeto
 
 Este projeto demonstra a implementação de uma arquitetura baseada em **Micro Frontends**, contemplando:
