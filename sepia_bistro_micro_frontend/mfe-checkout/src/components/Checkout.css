@@ -65,6 +65,7 @@
   padding: 16px 0;
   border-bottom: 1px dashed var(--border);
   text-align: left;
+  gap: 3px;
 }
 
 .checkout-item-name {
@@ -90,6 +91,10 @@
   margin-top: auto;
 }
 
+.checkout-total-row{
+  padding: 4px 20px 14px 20px;
+}
+
 .checkout-btn-primary {
   background-color: var(--primary);
   color: #FFFFFF;
@@ -109,6 +114,36 @@
 
 .checkout-btn-primary:active {
   transform: scale(0.98);
+}
+
+.checkout-qty-btn {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+
+  background: var(--card-bg);
+  color: var(--primary);
+
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+
+  transition: all .2s ease;
+}
+
+.checkout-qty-btn:hover {
+  background: var(--accent-bg);
+  border-color: var(--accent);
+}
+
+.checkout-qty-btn:active {
+  transform: scale(.95);
 }
 
 /* Responsividade para Mobile */

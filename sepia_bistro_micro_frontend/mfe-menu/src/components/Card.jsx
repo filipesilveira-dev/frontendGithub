@@ -1,4 +1,5 @@
- const formatCurrency = (value) => {
+// função de formatação fora do componente por questões de performance: a função não precisa ser recriada a cada re-renderização
+const formatCurrency = (value) => {
      return new Intl.NumberFormat('pt-BR', {
        style: 'currency',
        currency: 'BRL'
